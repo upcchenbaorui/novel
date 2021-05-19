@@ -16,8 +16,7 @@
 #import "NSArray+rd_wid.h"
 #import "UIView+rd_wid.h"
 #import "UINavigationController+FDFullscreenPopGesture.h"
-
-
+#import "MyViewController.h"
 
 @interface RDMainController ()
 
@@ -51,6 +50,9 @@
     }),({
         RDLibraryController *libraryController = [[RDLibraryController alloc] init];
         libraryController;
+    }),({
+         MyViewController* myController = [[MyViewController alloc] init];
+         myController;
     })];
 
     NSArray *normalIcons = @[@"tabbar_unselect",@"tabbar_faxian_unselect",@"tabbar_shucheng_unselect",@"tabbar_wo_unselect"];

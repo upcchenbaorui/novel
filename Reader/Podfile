@@ -25,5 +25,6 @@ target 'Reader' do
   pod 'UICKeyChainStore', '2.1.2'
   pod 'GBDeviceInfo', '~> 6.3.0'
   pod 'NJKWebViewProgress'
+  pod 'LookinServer', :configurations => ['Debug']
 
 end

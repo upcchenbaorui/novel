@@ -58,8 +58,6 @@
 - (RDMainController *)mainController {
     if (!_mainController) {
         _mainController = [[RDMainController alloc] init];
-
-
     }
     return _mainController;
 }

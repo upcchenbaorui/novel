@@ -33,7 +33,7 @@
         NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
         paragraphStyle.lineSpacing = 10;
         paragraphStyle.alignment = NSTextAlignmentCenter;
-        NSString *str = @"一日无书\n百事荒芜";
+        NSString *str = @"软件1801小分队\n推荐您赶快读书";
         NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:str];
         [attributedString addAttributes:@{NSParagraphStyleAttributeName:paragraphStyle,NSFontAttributeName:RDBoldFont16,NSForegroundColorAttributeName:RDBlackColor} range:NSMakeRange(0, str.length)];
         _tipLabel.attributedText = attributedString;

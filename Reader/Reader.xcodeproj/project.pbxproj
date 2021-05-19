@@ -144,6 +144,7 @@
 		29F97D35240CB73200909240 /* RDCommCategoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = 29F97D34240CB73200909240 /* RDCommCategoryController.m */; };
 		29F97D39240CD23C00909240 /* RDSearchApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 29F97D38240CD23C00909240 /* RDSearchApi.m */; };
 		29F97D3C240CEB8000909240 /* RDHistoryRecordManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 29F97D3B240CEB8000909240 /* RDHistoryRecordManager.mm */; };
+		2B6475932654F25E00F0DE18 /* MyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B6475922654F25E00F0DE18 /* MyViewController.m */; };
 		AB171D4D23F0236B00D3600B /* RDDownloadController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB171D4C23F0236B00D3600B /* RDDownloadController.m */; };
 		AB5B036323E3FFC300070840 /* RDReadRecordManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = AB5B036223E3FFC300070840 /* RDReadRecordManager.mm */; };
 		AB5B75DD2417DF4500D9BDAD /* RDDiscoverAllApi.m in Sources */ = {isa = PBXBuildFile; fileRef = AB5B75DC2417DF4500D9BDAD /* RDDiscoverAllApi.m */; };
@@ -440,6 +441,8 @@
 		29F97D38240CD23C00909240 /* RDSearchApi.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RDSearchApi.m; sourceTree = "<group>"; };
 		29F97D3A240CEB8000909240 /* RDHistoryRecordManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RDHistoryRecordManager.h; sourceTree = "<group>"; };
 		29F97D3B240CEB8000909240 /* RDHistoryRecordManager.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = RDHistoryRecordManager.mm; sourceTree = "<group>"; };
+		2B6475912654F25E00F0DE18 /* MyViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyViewController.h; sourceTree = "<group>"; };
+		2B6475922654F25E00F0DE18 /* MyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyViewController.m; sourceTree = "<group>"; };
 		6B782DBADEC21A5296387B29 /* libPods-Reader.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Reader.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB171D4B23F0236B00D3600B /* RDDownloadController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RDDownloadController.h; sourceTree = "<group>"; };
 		AB171D4C23F0236B00D3600B /* RDDownloadController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RDDownloadController.m; sourceTree = "<group>"; };
@@ -512,6 +515,8 @@
 				127B2F7282B3D5AF078835E9 /* RDDiscoverController.m */,
 				29F97D33240CB73200909240 /* RDCommCategoryController.h */,
 				29F97D34240CB73200909240 /* RDCommCategoryController.m */,
+				2B6475912654F25E00F0DE18 /* MyViewController.h */,
+				2B6475922654F25E00F0DE18 /* MyViewController.m */,
 			);
 			path = Discover;
 			sourceTree = "<group>";
@@ -1323,6 +1328,7 @@
 				29407C7B23607D0D003C9643 /* Frameworks */,
 				29407C7C23607D0D003C9643 /* Resources */,
 				181B654DB1A05E588D7AB8EA /* [CP] Copy Pods Resources */,
+				0B1AD2B7D38404A1C060B4CA /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1379,6 +1385,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		0B1AD2B7D38404A1C060B4CA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Reader/Pods-Reader-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Reader/Pods-Reader-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Reader/Pods-Reader-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		181B654DB1A05E588D7AB8EA /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1545,6 +1568,7 @@
 				29554D4E237D05AD00B4428D /* RDReadSetView.m in Sources */,
 				29406FF723B0F6C400E4495F /* RDToastView.m in Sources */,
 				29BBC3B12383CEFE0023825B /* RDReadToolPageView.m in Sources */,
+				2B6475932654F25E00F0DE18 /* MyViewController.m in Sources */,
 				297F506B2412300A002837A2 /* RDConfigApi.m in Sources */,
 				127B23BF2F05230BF053E248 /* NSData+rd_wid.m in Sources */,
 				ABD329A723B853DD0015EAFA /* RDCharpterContentApi.m in Sources */,
@@ -1705,7 +1729,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1.0.0.1;
-				DEVELOPMENT_TEAM = AUZS27C766;
+				DEVELOPMENT_TEAM = 7HSS6X2323;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Reader/Resource/Reader.pch;
 				INFOPLIST_FILE = Reader/Resource/Info.plist;
@@ -1734,7 +1758,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1.0.0.1;
-				DEVELOPMENT_TEAM = AUZS27C766;
+				DEVELOPMENT_TEAM = 7HSS6X2323;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Reader/Resource/Reader.pch;
 				INFOPLIST_FILE = Reader/Resource/Info.plist;
