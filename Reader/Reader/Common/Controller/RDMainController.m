@@ -17,8 +17,12 @@
 #import "UIView+rd_wid.h"
 #import "UINavigationController+FDFullscreenPopGesture.h"
 #import "MyViewController.h"
+#import "RDLoginView.h"
+#import <Masonry/Masonry.h>
 
 @interface RDMainController ()
+
+@property(nonatomic, strong) RDLoginView *loginView;
 
 @end
 
@@ -37,7 +41,10 @@
     self.delegate = self;
     self.fd_prefersNavigationBarHidden = YES;
    [self initSetup];
-
+    
+//    self.loginView = [[RDLoginView alloc] init];
+//    self.loginView.frame = self.view.frame;
+//    [self.view addSubview:self.loginView];
 }
 
 -(void)initSetup{

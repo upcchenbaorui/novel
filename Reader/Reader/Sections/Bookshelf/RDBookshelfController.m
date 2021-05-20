@@ -234,6 +234,7 @@
                 array = [NSMutableArray array];
                 [self.bookSource addObject:array];
             }
+            RDBookDetailModel *record = [RDReadRecordManager getReadRecordWithBookId:290633];
             [array addObject:books[i]];
         }
         [self.dataSource addObjectsFromArray:self.bookSource];

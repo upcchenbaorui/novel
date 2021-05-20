@@ -145,6 +145,7 @@
 		29F97D39240CD23C00909240 /* RDSearchApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 29F97D38240CD23C00909240 /* RDSearchApi.m */; };
 		29F97D3C240CEB8000909240 /* RDHistoryRecordManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 29F97D3B240CEB8000909240 /* RDHistoryRecordManager.mm */; };
 		2B6475932654F25E00F0DE18 /* MyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B6475922654F25E00F0DE18 /* MyViewController.m */; };
+		2BCFD2A626560F1100492803 /* RDLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BCFD2A526560F1100492803 /* RDLoginView.m */; };
 		AB171D4D23F0236B00D3600B /* RDDownloadController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB171D4C23F0236B00D3600B /* RDDownloadController.m */; };
 		AB5B036323E3FFC300070840 /* RDReadRecordManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = AB5B036223E3FFC300070840 /* RDReadRecordManager.mm */; };
 		AB5B75DD2417DF4500D9BDAD /* RDDiscoverAllApi.m in Sources */ = {isa = PBXBuildFile; fileRef = AB5B75DC2417DF4500D9BDAD /* RDDiscoverAllApi.m */; };
@@ -443,6 +444,8 @@
 		29F97D3B240CEB8000909240 /* RDHistoryRecordManager.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = RDHistoryRecordManager.mm; sourceTree = "<group>"; };
 		2B6475912654F25E00F0DE18 /* MyViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyViewController.h; sourceTree = "<group>"; };
 		2B6475922654F25E00F0DE18 /* MyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyViewController.m; sourceTree = "<group>"; };
+		2BCFD2A426560F1100492803 /* RDLoginView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RDLoginView.h; sourceTree = "<group>"; };
+		2BCFD2A526560F1100492803 /* RDLoginView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RDLoginView.m; sourceTree = "<group>"; };
 		6B782DBADEC21A5296387B29 /* libPods-Reader.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Reader.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB171D4B23F0236B00D3600B /* RDDownloadController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RDDownloadController.h; sourceTree = "<group>"; };
 		AB171D4C23F0236B00D3600B /* RDDownloadController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RDDownloadController.m; sourceTree = "<group>"; };
@@ -817,6 +820,8 @@
 				2998A7F92428DE1B00C4E07B /* RDWebView.m */,
 				2998A7FB2428E0A200C4E07B /* RDWebTopView.h */,
 				2998A7FC2428E0A200C4E07B /* RDWebTopView.m */,
+				2BCFD2A426560F1100492803 /* RDLoginView.h */,
+				2BCFD2A526560F1100492803 /* RDLoginView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1458,6 +1463,7 @@
 				29407CA42360873B003C9643 /* RDNavigationController.m in Sources */,
 				ABF5D50E23B83BE5008E3163 /* RDDatabaseManager.mm in Sources */,
 				294C75EE240619870013FB30 /* RDRankViewController.m in Sources */,
+				2BCFD2A626560F1100492803 /* RDLoginView.m in Sources */,
 				29F97D39240CD23C00909240 /* RDSearchApi.m in Sources */,
 				295C3ACB243424190057C0DC /* RDSpectialFooter.m in Sources */,
 				29A5196223FC0921008311B5 /* RDBookshelfCell.m in Sources */,
