@@ -16,7 +16,10 @@ typedef NS_ENUM(NSInteger, JxbLoginShowType) {
     JxbLoginShowType_PASS
 };
 
+typedef void (^pushToRegisterBlock)(void);
 @interface RDLoginView : UIView
+
+@property(nonatomic, copy) pushToRegisterBlock block;
 
 @end
 

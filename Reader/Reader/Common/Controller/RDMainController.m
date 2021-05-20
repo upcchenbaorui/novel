@@ -19,6 +19,7 @@
 #import "MyViewController.h"
 #import "RDLoginView.h"
 #import <Masonry/Masonry.h>
+#import "RDRegisterControllerViewController.h"
 
 @interface RDMainController ()
 
@@ -42,9 +43,13 @@
     self.fd_prefersNavigationBarHidden = YES;
    [self initSetup];
     
-//    self.loginView = [[RDLoginView alloc] init];
-//    self.loginView.frame = self.view.frame;
-//    [self.view addSubview:self.loginView];
+    self.loginView = [[RDLoginView alloc] init];
+    self.loginView.frame = self.view.frame;
+    __weak typeof (self) weakSelf = self;
+    self.loginView.block = ^{
+        [weakSelf.navigationController pushViewController:[[RDRegisterControllerViewController alloc] init] animated:YES];
+    };
+    [self.view addSubview:self.loginView];
 }
 
 -(void)initSetup{

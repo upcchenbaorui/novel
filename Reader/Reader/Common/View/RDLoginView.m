@@ -107,6 +107,7 @@
     
     self.registerBtn = [UIButton buttonWithType:UIButtonTypeSystem];
     self.loginBtn = [UIButton buttonWithType:UIButtonTypeSystem];
+    [self.registerBtn addTarget:self action:@selector(toRegisterController) forControlEvents:UIControlEventTouchUpInside];
     self.registerBtn.frame = CGRectMake(32, txtPwd.bottom + 6, 33, 22);
     [self.registerBtn setTitle:@"注册" forState:UIControlStateNormal];
     self.registerBtn.tintColor = [UIColor grayColor];
@@ -161,5 +162,9 @@
     }
 }
 
-
+- (void)toRegisterController {
+    if(self.block){
+        self.block();
+    }
+}
 @end
