@@ -18,4 +18,12 @@
     NSArray *arr =  [[RDModelAgent agent] createModel:RDConfigModel.class fromJson:self.httpModel.data];
     return [arr objectAtIndexSafely:0];
 }
+
+- (id)requestArgument {
+    NSDictionary *dic = @{
+        @"open_access_token" : @"60737a4b-42ef-4502-bb87-501c2c2663ab",
+    };
+    return dic;
+}
+
 @end

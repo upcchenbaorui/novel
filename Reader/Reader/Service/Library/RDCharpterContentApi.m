@@ -10,7 +10,7 @@
 
 @implementation RDCharpterContentApi
 - (NSString *)requestUrl {
-    return @"/app/open/api/chapter/get";
+    return @"/app/open/api/chapter/get?open_access_token=60737a4b-42ef-4502-bb87-501c2c2663ab";
 }
 - (YTKRequestSerializerType)requestSerializerType {
     return YTKRequestSerializerTypeJSON;
@@ -23,6 +23,7 @@
 {
     
     return @{
+        @"open_access_token" : @"60737a4b-42ef-4502-bb87-501c2c2663ab",
         @"chapterIdList":MakeNSArray(self.charpters),
         @"bookId":@(self.bookId),
     };

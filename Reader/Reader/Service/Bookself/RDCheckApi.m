@@ -30,7 +30,10 @@
         dic[@"chapterId"] = @(chapter.charpterId);
         [array addObject:dic];
     }
-    return @{@"books":array};
+    return @{
+        @"open_access_token" : @"60737a4b-42ef-4502-bb87-501c2c2663ab",
+        @"books":array
+    };
     
 }
 -(NSArray *)updateBooks
