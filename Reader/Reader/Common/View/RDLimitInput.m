@@ -61,14 +61,14 @@ IMPLEMENT_PROPERTY(UITextView)
 
 - (void)textFieldViewDidChange:(NSNotification*)notification {
     if (!self.enableLimitCount) return;
-    UITextField *textField = (UITextField *)notification.object;
+//    UITextField *textField = (UITextField *)notification.object;
     
-    NSNumber *number = [textField valueForKey:kLimitInputKey];
-    if (number && textField.text.length > [number integerValue] && textField.markedTextRange == nil) {
-        NSRange emojiRange = [textField.text rangeOfComposedCharacterSequencesForRange:NSMakeRange(0, [number integerValue])];
-        textField.text = [textField.text substringWithRange: NSMakeRange(0, emojiRange.length)];
-        [textField.undoManager removeAllActions];
-    }
+//    NSNumber *number = [textField valueForKey:kLimitInputKey];
+//    if (number && textField.text.length > [number integerValue] && textField.markedTextRange == nil) {
+//        NSRange emojiRange = [textField.text rangeOfComposedCharacterSequencesForRange:NSMakeRange(0, [number integerValue])];
+//        textField.text = [textField.text substringWithRange: NSMakeRange(0, emojiRange.length)];
+//        [textField.undoManager removeAllActions];
+//    }
 }
 
 - (void)textViewDidChange: (NSNotification *) notificaiton {
