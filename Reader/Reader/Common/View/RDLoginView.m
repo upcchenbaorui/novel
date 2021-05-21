@@ -107,6 +107,10 @@
     
     self.registerBtn = [UIButton buttonWithType:UIButtonTypeSystem];
     self.loginBtn = [UIButton buttonWithType:UIButtonTypeSystem];
+    [self.loginBtn addTarget:self action:@selector(loginSecsess) forControlEvents:UIControlEventTouchUpInside];
+    self.loginBtn.frame = CGRectMake(70, txtPwd.bottom + 6, 33, 22);
+    self.loginBtn.tintColor = [UIColor grayColor];
+    [self.loginBtn setTitle:@"登陆" forState:UIControlStateNormal];
     [self.registerBtn addTarget:self action:@selector(toRegisterController) forControlEvents:UIControlEventTouchUpInside];
     self.registerBtn.frame = CGRectMake(32, txtPwd.bottom + 6, 33, 22);
     [self.registerBtn setTitle:@"注册" forState:UIControlStateNormal];
@@ -163,8 +167,14 @@
 }
 
 - (void)toRegisterController {
-    if(self.block){
-        self.block();
+    if(self.registerBlock){
+        self.registerBlock();
+    }
+}
+
+- (void)loginSecsess {
+    if(self.loginBlock) {
+        self.loginBlock();
     }
 }
 @end

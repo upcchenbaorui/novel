@@ -46,8 +46,11 @@
     self.loginView = [[RDLoginView alloc] init];
     self.loginView.frame = self.view.frame;
     __weak typeof (self) weakSelf = self;
-    self.loginView.block = ^{
+    self.loginView.registerBlock = ^{
         [weakSelf.navigationController pushViewController:[[RDRegisterControllerViewController alloc] init] animated:YES];
+    };
+    self.loginView.loginBlock = ^{
+        weakSelf.loginView.hidden = YES;
     };
     [self.view addSubview:self.loginView];
 }
