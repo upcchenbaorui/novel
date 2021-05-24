@@ -18,6 +18,7 @@
 #define rectRightHand       CGRectMake(imgLogin.frame.size.width / 2 + 60, 90, 40, 65)
 #define rectRightHandGone   CGRectMake(mainSize.width / 2 + 62, vLogin.frame.origin.y - 22, 40, 40)
 
+const CGFloat topMargin = 88;
 @interface RDLoginView()<UITextFieldDelegate>
 {
     UITextField* txtUser;
@@ -51,7 +52,7 @@
 
 - (void)setupUI {
     
-    UIImageView* imgLogin = [[UIImageView alloc] initWithFrame:CGRectMake(mainSize.width / 2 - 211 / 2, 100, 211, 109)];
+    UIImageView* imgLogin = [[UIImageView alloc] initWithFrame:CGRectMake(mainSize.width / 2 - 211 / 2, 100 + topMargin, 211, 109)];
     imgLogin.image = [UIImage imageNamed:@"owl-login"];
     imgLogin.layer.masksToBounds = YES;
     [self addSubview:imgLogin];
@@ -64,7 +65,7 @@
     imgRightHand.image = [UIImage imageNamed:@"owl-login-arm-right"];
     [imgLogin addSubview:imgRightHand];
 
-    UIView* vLogin = [[UIView alloc] initWithFrame:CGRectMake(15, 200, mainSize.width - 30, 170)];
+    UIView* vLogin = [[UIView alloc] initWithFrame:CGRectMake(15, 200 + topMargin, mainSize.width - 30, 170)];
     vLogin.layer.borderWidth = 0.5;
     vLogin.layer.borderColor = [[UIColor lightGrayColor] CGColor];
     vLogin.backgroundColor = [UIColor whiteColor];

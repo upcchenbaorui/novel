@@ -7,8 +7,11 @@
 //
 
 #import "RDRegisterControllerViewController.h"
+#import "RDRegisterView.h"
 
 @interface RDRegisterControllerViewController ()
+
+@property (nonatomic, strong) UIView *registerView;
 
 @end
 
@@ -16,8 +19,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.navigationController setNavigationBarHidden:YES animated:YES];
     self.view.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:self.topView];
+    self.topView.titleLabel.text = @"我的";
+    self.registerView = [[RDRegisterView alloc] init];
+    self.registerView.frame = CGRectMake(0, self.topView.bottom, self.view.width, self.view.height - self.topView.bottom);
+    [self.view addSubview:self.registerView];
+
 }
 
 

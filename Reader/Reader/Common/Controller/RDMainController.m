@@ -50,9 +50,24 @@
         [weakSelf.navigationController pushViewController:[[RDRegisterControllerViewController alloc] init] animated:YES];
     };
     self.loginView.loginBlock = ^{
-        weakSelf.loginView.hidden = YES;
+        [weakSelf hiddenLoginView];
     };
     [self.view addSubview:self.loginView];
+}
+
+
+- (void)hiddenLoginView {
+    [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+            self.loginView.alpha = 1;
+            CGRect frame = self.loginView.frame;
+            self.loginView.frame = CGRectMake(frame.size.width, 0, frame.size.width, frame.size.height);
+            
+        } completion:^(BOOL finish){
+            self.loginView.frame = CGRectMake(0, 0, self.loginView.width, self.loginView.height);
+            self.loginView.hidden = YES;
+            self.loginView.alpha = 1;
+        }
+    ];
 }
 
 -(void)initSetup{
