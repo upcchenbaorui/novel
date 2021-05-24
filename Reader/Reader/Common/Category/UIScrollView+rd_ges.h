@@ -2,7 +2,7 @@
 //  UIScrollView+rd_ges.h
 //  Reader
 //
-//  Created by yuenov on 2020/4/7.
+//  Created by 陈保瑞 on 2020/4/7.
 //  Copyright © 2020 yuenov. All rights reserved.
 //
 

@@ -2,7 +2,7 @@
 //  RDDiscoverAllApi.h
 //  Reader
 //
-//  Created by yuenov on 2020/3/10.
+//  Created by 陈保瑞 on 2020/3/10.
 //  Copyright © 2020 yuenov. All rights reserved.
 //
 

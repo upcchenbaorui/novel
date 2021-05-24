@@ -2,7 +2,7 @@
 //  RDDownloadController.m
 //  Reader
 //
-//  Created by yuenov on 2020/2/9.
+//  Created by 陈保瑞 on 2020/2/9.
 //  Copyright © 2020 yuenov. All rights reserved.
 //
 

@@ -2,7 +2,7 @@
 //  RDCommParamManager.h
 //  Reader
 //
-//  Created by yuenov on 2020/4/5.
+//  Created by 陈保瑞 on 2020/4/5.
 //  Copyright © 2020 yuenov. All rights reserved.
 //
 

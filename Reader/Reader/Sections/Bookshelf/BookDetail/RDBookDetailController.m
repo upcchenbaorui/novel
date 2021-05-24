@@ -2,8 +2,8 @@
 //  RDBookDetailController.m
 //  Reader
 //
-//  Created by yuenov on 2019/10/30.
-//  Copyright © 2019 yuenov. All rights reserved.
+//  Created by 陈保瑞 on 2020/10/30.
+//  Copyright © 2020 yuenov. All rights reserved.
 //
 
 #import "RDBookDetailController.h"

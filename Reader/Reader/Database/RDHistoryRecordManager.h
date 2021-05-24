@@ -2,7 +2,7 @@
 //  RDHistoryRecordManager.h
 //  Reader
 //
-//  Created by yuenov on 2020/3/2.
+//  Created by 陈保瑞 on 2020/3/2.
 //  Copyright © 2020 yuenov. All rights reserved.
 //
 

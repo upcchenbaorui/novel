@@ -2,8 +2,8 @@
 //  RDEnums.h
 //  Reader
 //
-//  Created by yuenov on 2019/11/19.
-//  Copyright © 2019 yuenov. All rights reserved.
+//  Created by 陈保瑞 on 2020/11/19.
+//  Copyright © 2020 yuenov. All rights reserved.
 //
 
 typedef NS_ENUM(NSInteger,RDPageType) {

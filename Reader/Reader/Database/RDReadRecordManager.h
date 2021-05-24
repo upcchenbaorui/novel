@@ -2,7 +2,7 @@
 //  RDReadRecordManager.h
 //  Reader
 //
-//  Created by yuenov on 2020/1/31.
+//  Created by 陈保瑞 on 2020/1/31.
 //  Copyright © 2020 yuenov. All rights reserved.
 //
 

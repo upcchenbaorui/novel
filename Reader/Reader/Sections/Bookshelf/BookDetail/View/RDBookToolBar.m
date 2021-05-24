@@ -2,8 +2,8 @@
 //  RDBookToolBar.m
 //  Reader
 //
-//  Created by yuenov on 2019/11/5.
-//  Copyright © 2019 yuenov. All rights reserved.
+//  Created by 陈保瑞 on 2020/11/5.
+//  Copyright © 2020 yuenov. All rights reserved.
 //
 
 #import "RDBookToolBar.h"

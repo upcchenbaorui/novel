@@ -2,7 +2,7 @@
 //  RDBookRecommendApi.h
 //  Reader
 //
-//  Created by yuenov on 2020/3/11.
+//  Created by 陈保瑞 on 2020/3/11.
 //  Copyright © 2020 yuenov. All rights reserved.
 //
 
