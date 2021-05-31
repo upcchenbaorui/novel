@@ -145,6 +145,9 @@
 		29F97D39240CD23C00909240 /* RDSearchApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 29F97D38240CD23C00909240 /* RDSearchApi.m */; };
 		29F97D3C240CEB8000909240 /* RDHistoryRecordManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 29F97D3B240CEB8000909240 /* RDHistoryRecordManager.mm */; };
 		2B6475932654F25E00F0DE18 /* MyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B6475922654F25E00F0DE18 /* MyViewController.m */; };
+		2B743D6B2664FE4200FE4224 /* MyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B743D6A2664FE4200FE4224 /* MyTableViewCell.m */; };
+		2B743D722665152A00FE4224 /* MyErrorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B743D712665152A00FE4224 /* MyErrorView.m */; };
+		2B7EF0632664DEC300841451 /* RDMyTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B7EF0622664DEC300841451 /* RDMyTopView.m */; };
 		2BCC3675265BB72800AE5C80 /* RDRegisterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BCC3674265BB72800AE5C80 /* RDRegisterView.m */; };
 		2BCFD2A626560F1100492803 /* RDLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BCFD2A526560F1100492803 /* RDLoginView.m */; };
 		2BCFD2B0265695DC00492803 /* RDRegisterControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BCFD2AF265695DC00492803 /* RDRegisterControllerViewController.m */; };
@@ -446,6 +449,13 @@
 		29F97D3B240CEB8000909240 /* RDHistoryRecordManager.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = RDHistoryRecordManager.mm; sourceTree = "<group>"; };
 		2B6475912654F25E00F0DE18 /* MyViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyViewController.h; sourceTree = "<group>"; };
 		2B6475922654F25E00F0DE18 /* MyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyViewController.m; sourceTree = "<group>"; };
+		2B743D692664FE4200FE4224 /* MyTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyTableViewCell.h; sourceTree = "<group>"; };
+		2B743D6A2664FE4200FE4224 /* MyTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyTableViewCell.m; sourceTree = "<group>"; };
+		2B743D6D2664FFFB00FE4224 /* CommonStrings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommonStrings.h; sourceTree = "<group>"; };
+		2B743D702665152A00FE4224 /* MyErrorView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyErrorView.h; sourceTree = "<group>"; };
+		2B743D712665152A00FE4224 /* MyErrorView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyErrorView.m; sourceTree = "<group>"; };
+		2B7EF0612664DEC300841451 /* RDMyTopView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RDMyTopView.h; sourceTree = "<group>"; };
+		2B7EF0622664DEC300841451 /* RDMyTopView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RDMyTopView.m; sourceTree = "<group>"; };
 		2BCC3673265BB72800AE5C80 /* RDRegisterView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RDRegisterView.h; sourceTree = "<group>"; };
 		2BCC3674265BB72800AE5C80 /* RDRegisterView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RDRegisterView.m; sourceTree = "<group>"; };
 		2BCFD2A426560F1100492803 /* RDLoginView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RDLoginView.h; sourceTree = "<group>"; };
@@ -708,6 +718,7 @@
 		29407C9C23608673003C9643 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				2B743D682664FE1A00FE4224 /* Cell */,
 				ABC345072439DDF000061974 /* Manager */,
 				29696CD7238683B800212879 /* Read */,
 				29B00BF3237C272D00E1B892 /* Config */,
@@ -832,6 +843,8 @@
 				2BCFD2A526560F1100492803 /* RDLoginView.m */,
 				2BCC3673265BB72800AE5C80 /* RDRegisterView.h */,
 				2BCC3674265BB72800AE5C80 /* RDRegisterView.m */,
+				2B7EF0612664DEC300841451 /* RDMyTopView.h */,
+				2B7EF0622664DEC300841451 /* RDMyTopView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1101,6 +1114,7 @@
 			children = (
 				29B00BF4237C275800E1B892 /* RDReadConfigManager.h */,
 				29B00BF5237C275800E1B892 /* RDReadConfigManager.m */,
+				2B743D6D2664FFFB00FE4224 /* CommonStrings.h */,
 			);
 			path = Config;
 			sourceTree = "<group>";
@@ -1286,6 +1300,17 @@
 			path = Search;
 			sourceTree = "<group>";
 		};
+		2B743D682664FE1A00FE4224 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				2B743D692664FE4200FE4224 /* MyTableViewCell.h */,
+				2B743D6A2664FE4200FE4224 /* MyTableViewCell.m */,
+				2B743D702665152A00FE4224 /* MyErrorView.h */,
+				2B743D712665152A00FE4224 /* MyErrorView.m */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		9A8666F0A987A6444FF4F374 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -1465,6 +1490,7 @@
 			files = (
 				2992BB7323B225E400C599B1 /* RDCatalogController.m in Sources */,
 				292513E8236929BC00090883 /* RDBookDetailController.m in Sources */,
+				2B743D6B2664FE4200FE4224 /* MyTableViewCell.m in Sources */,
 				29CE2BA023FD2D2D001B0D03 /* RDSearchHistoryCell.m in Sources */,
 				29406FF423B0EAD000E4495F /* RDCategoryApi.m in Sources */,
 				29CE2BB223FF7FB4001B0D03 /* RDReadHelper.m in Sources */,
@@ -1473,6 +1499,7 @@
 				29407CA42360873B003C9643 /* RDNavigationController.m in Sources */,
 				ABF5D50E23B83BE5008E3163 /* RDDatabaseManager.mm in Sources */,
 				294C75EE240619870013FB30 /* RDRankViewController.m in Sources */,
+				2B743D722665152A00FE4224 /* MyErrorView.m in Sources */,
 				2BCFD2A626560F1100492803 /* RDLoginView.m in Sources */,
 				29F97D39240CD23C00909240 /* RDSearchApi.m in Sources */,
 				295C3ACB243424190057C0DC /* RDSpectialFooter.m in Sources */,
@@ -1559,6 +1586,7 @@
 				AB5B75DD2417DF4500D9BDAD /* RDDiscoverAllApi.m in Sources */,
 				ABB7B8F32419378900225828 /* RDBookRecommendApi.m in Sources */,
 				2998A7F72428DD7A00C4E07B /* RDWebController.m in Sources */,
+				2B7EF0632664DEC300841451 /* RDMyTopView.m in Sources */,
 				29696CF02386D48300212879 /* RDReadPageViewController.m in Sources */,
 				294C75F9240621F10013FB30 /* RDRankCell.m in Sources */,
 				29EFAF4F236473350020E5AE /* RDModelAgent.m in Sources */,

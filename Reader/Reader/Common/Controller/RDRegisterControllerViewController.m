@@ -21,7 +21,7 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:self.topView];
-    self.topView.titleLabel.text = @"我的";
+    self.topView.titleLabel.text = @"注册";
     self.registerView = [[RDRegisterView alloc] init];
     self.registerView.frame = CGRectMake(0, self.topView.bottom, self.view.width, self.view.height - self.topView.bottom);
     [self.view addSubview:self.registerView];
