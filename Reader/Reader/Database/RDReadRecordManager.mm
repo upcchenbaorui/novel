@@ -42,6 +42,11 @@
     return [[RDDatabaseManager sharedInstance].database getObjectsOfClass:RDBookDetailModel.class fromTable:kReadRecordTable where:RDBookDetailModel.onBookshelf.is(YES) orderBy:RDBookDetailModel.readTime.order(WCTOrderedDescending)];
 }
 
++(NSArray *)getAllBooks
+{
+    return [[RDDatabaseManager sharedInstance].database getObjectsOfClass:RDBookDetailModel.class fromTable:kReadRecordTable where:(YES) orderBy:RDBookDetailModel.readTime.order(WCTOrderedDescending)];
+}
+
 +(NSArray *)getAllOnBookshelfPram
 {
     NSMutableArray *array = [NSMutableArray array];

@@ -24,6 +24,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 +(void)removeBookFromBookShelfWithBookId:(NSInteger)bookid;
 
++(NSArray *)getAllBooks;
+
 /// 获取所有书架上的书籍
 +(NSArray *)getAllOnBookshelf;
 

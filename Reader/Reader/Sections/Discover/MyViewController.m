@@ -27,6 +27,7 @@
     [super viewDidLoad];
     [self setupData];
     [self setupUIs];
+    
     // Do any additional setup after loading the view.
 }
 
