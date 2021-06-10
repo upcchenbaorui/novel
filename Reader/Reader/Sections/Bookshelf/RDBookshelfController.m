@@ -235,6 +235,9 @@
                 [self.bookSource addObject:array];
             }
            // RDBookDetailModel *record = [RDReadRecordManager getReadRecordWithBookId:290633];
+//            RDBookDetailModel *model = [[RDBookDetailModel alloc] init];
+//            RDBookDetailModel *tmp = books[i];
+//            model.bookId = tmp.bookId;
             [array addObject:books[i]];
         }
         [self.dataSource addObjectsFromArray:self.bookSource];
