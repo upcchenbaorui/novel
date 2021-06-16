@@ -13,7 +13,7 @@
 #import "MyErrorView.h"
 #import "RDAboutUsControllerViewController.h"
 #import "RDBrowseRecordViewController.h"
-
+#import "RDReadRecordManager.h"
 @interface MyViewController () <UITableViewDelegate,UITableViewDataSource,showErrorViewProtocol>
 
 @property(nonatomic, strong) RDMyTopView *myTopView;
@@ -112,6 +112,10 @@
         return;
     }
     else if(type == liulanjilu) {
+        if([[RDReadRecordManager getAllBooks] count] <= 0) {
+            [self showErrorView:@"本地暂无浏览记录"];
+            return;
+        }
         RDBrowseRecordViewController *VC = [[RDBrowseRecordViewController alloc] init];
         [self.navigationController pushViewController:VC animated:YES];
         return;
