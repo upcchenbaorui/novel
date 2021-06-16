@@ -18,6 +18,9 @@
 
 @implementation RDBrowseRecordViewController
 
+- (void)back {
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -26,6 +29,7 @@
     
     self.topView = [[RDTopView alloc] initWithBackStyle];
     self.topView.titleLabel.text = @"浏览记录";
+    [self.topView.backBtn addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.topView];
     
     self.bookView = [[UITableView alloc] init];
