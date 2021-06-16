@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol RDSearchViewDelegate <NSObject>
 
 -(void)searchViewDidSelect;
+-(void)searchViewDidSelect:(NSString *)str;
 
 @end
 

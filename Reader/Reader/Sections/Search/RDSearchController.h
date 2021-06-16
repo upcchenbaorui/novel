@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface RDSearchController : RDBaseViewController
 
+@property (nonatomic, copy) NSString *searchStr;
+
 @end
 
 NS_ASSUME_NONNULL_END

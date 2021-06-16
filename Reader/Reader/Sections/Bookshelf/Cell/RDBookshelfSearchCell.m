@@ -32,9 +32,10 @@
     return _searchView;
 }
 
--(void)searchViewDidSelect
+-(void)searchViewDidSelect:(NSString *)str
 {
     RDSearchController *controller = [[RDSearchController alloc] init];
+    controller.searchStr = str;
     [[RDUtilities getCurrentVC].navigationController pushViewController:controller animated:YES];
 }
 

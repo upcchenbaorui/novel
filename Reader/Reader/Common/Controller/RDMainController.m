@@ -21,6 +21,8 @@
 #import <Masonry/Masonry.h>
 #import "RDRegisterControllerViewController.h"
 
+#define kRDLoginSuccess @"kRDLoginSuccess"
+
 @interface RDMainController ()
 
 @property(nonatomic, strong) RDLoginView *loginView;
@@ -57,6 +59,7 @@
 
 
 - (void)hiddenLoginView {
+    [[NSNotificationCenter defaultCenter] postNotificationName:kRDLoginSuccess object:nil userInfo:nil];
     [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
             self.loginView.alpha = 1;
             CGRect frame = self.loginView.frame;

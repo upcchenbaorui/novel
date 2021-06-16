@@ -107,6 +107,10 @@
     [self.searchTopView.textField becomeFirstResponder];
 }
 
+- (void)setSearchStr:(NSString *)searchStr {
+    self.searchTopView.textField.placeholder = searchStr;
+    
+}
 
 -(void)p_showResultController
 {
