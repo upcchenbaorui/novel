@@ -144,6 +144,8 @@
 		29F97D35240CB73200909240 /* RDCommCategoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = 29F97D34240CB73200909240 /* RDCommCategoryController.m */; };
 		29F97D39240CD23C00909240 /* RDSearchApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 29F97D38240CD23C00909240 /* RDSearchApi.m */; };
 		29F97D3C240CEB8000909240 /* RDHistoryRecordManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 29F97D3B240CEB8000909240 /* RDHistoryRecordManager.mm */; };
+		2B40A4EF2679A98600622F05 /* RDBrowseRecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B40A4EE2679A98600622F05 /* RDBrowseRecordViewController.m */; };
+		2B40A4F32679AA9B00622F05 /* RDBrowerRecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B40A4F22679AA9B00622F05 /* RDBrowerRecordCell.m */; };
 		2B6475932654F25E00F0DE18 /* MyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B6475922654F25E00F0DE18 /* MyViewController.m */; };
 		2B743D6B2664FE4200FE4224 /* MyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B743D6A2664FE4200FE4224 /* MyTableViewCell.m */; };
 		2B743D722665152A00FE4224 /* MyErrorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B743D712665152A00FE4224 /* MyErrorView.m */; };
@@ -448,6 +450,10 @@
 		29F97D38240CD23C00909240 /* RDSearchApi.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RDSearchApi.m; sourceTree = "<group>"; };
 		29F97D3A240CEB8000909240 /* RDHistoryRecordManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RDHistoryRecordManager.h; sourceTree = "<group>"; };
 		29F97D3B240CEB8000909240 /* RDHistoryRecordManager.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = RDHistoryRecordManager.mm; sourceTree = "<group>"; };
+		2B40A4ED2679A98600622F05 /* RDBrowseRecordViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RDBrowseRecordViewController.h; sourceTree = "<group>"; };
+		2B40A4EE2679A98600622F05 /* RDBrowseRecordViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RDBrowseRecordViewController.m; sourceTree = "<group>"; };
+		2B40A4F12679AA9B00622F05 /* RDBrowerRecordCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RDBrowerRecordCell.h; sourceTree = "<group>"; };
+		2B40A4F22679AA9B00622F05 /* RDBrowerRecordCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RDBrowerRecordCell.m; sourceTree = "<group>"; };
 		2B6475912654F25E00F0DE18 /* MyViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyViewController.h; sourceTree = "<group>"; };
 		2B6475922654F25E00F0DE18 /* MyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyViewController.m; sourceTree = "<group>"; };
 		2B743D692664FE4200FE4224 /* MyTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyTableViewCell.h; sourceTree = "<group>"; };
@@ -800,6 +806,8 @@
 				2BCFD2AF265695DC00492803 /* RDRegisterControllerViewController.m */,
 				2BD72004267234FB00F65C35 /* RDAboutUsControllerViewController.h */,
 				2BD72005267234FB00F65C35 /* RDAboutUsControllerViewController.m */,
+				2B40A4ED2679A98600622F05 /* RDBrowseRecordViewController.h */,
+				2B40A4EE2679A98600622F05 /* RDBrowseRecordViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1312,6 +1320,8 @@
 				2B743D6A2664FE4200FE4224 /* MyTableViewCell.m */,
 				2B743D702665152A00FE4224 /* MyErrorView.h */,
 				2B743D712665152A00FE4224 /* MyErrorView.m */,
+				2B40A4F12679AA9B00622F05 /* RDBrowerRecordCell.h */,
+				2B40A4F22679AA9B00622F05 /* RDBrowerRecordCell.m */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1614,6 +1624,8 @@
 				29CE2BAF23FE6439001B0D03 /* RDSearchResultCell.m in Sources */,
 				2948FD03236AFF1800321888 /* RDBookDetailCoverCell.m in Sources */,
 				29F5597E24065B1B00742C19 /* RDEndApi.m in Sources */,
+				2B40A4EF2679A98600622F05 /* RDBrowseRecordViewController.m in Sources */,
+				2B40A4F32679AA9B00622F05 /* RDBrowerRecordCell.m in Sources */,
 				2992BB6B23B213AC00C599B1 /* RDLoadIngView.m in Sources */,
 				127B2DFB64AA64E862665628 /* NSString+rd_wid.m in Sources */,
 				29554D4E237D05AD00B4428D /* RDReadSetView.m in Sources */,

@@ -12,6 +12,8 @@
 #import "CommonStrings.h"
 #import "MyErrorView.h"
 #import "RDAboutUsControllerViewController.h"
+#import "RDBrowseRecordViewController.h"
+
 @interface MyViewController () <UITableViewDelegate,UITableViewDataSource,showErrorViewProtocol>
 
 @property(nonatomic, strong) RDMyTopView *myTopView;
@@ -106,6 +108,11 @@
         RDAboutUsControllerViewController *VC = [[RDAboutUsControllerViewController alloc] init];
         VC.title = @"关于我们";
         VC.contentStr = @"欢迎对我们产品提出任何的意见与反馈\n\nQQ: 386470983\n\n开发团队：UPC软件1801小分队。\n\n项目成员：陈帮威、陈保瑞、来子愚、刘德鑫(排名不分先后，学号顺序)";
+        [self.navigationController pushViewController:VC animated:YES];
+        return;
+    }
+    else if(type == liulanjilu) {
+        RDBrowseRecordViewController *VC = [[RDBrowseRecordViewController alloc] init];
         [self.navigationController pushViewController:VC animated:YES];
         return;
     }

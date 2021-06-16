@@ -73,6 +73,7 @@
    </AnalyzeAction>
    <ArchiveAction
       buildConfiguration = "Release"
+      customArchiveName = "Reader"
       revealArchiveInOrganizer = "YES">
    </ArchiveAction>
 </Scheme>
