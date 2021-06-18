@@ -146,6 +146,7 @@
 		29F97D3C240CEB8000909240 /* RDHistoryRecordManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 29F97D3B240CEB8000909240 /* RDHistoryRecordManager.mm */; };
 		2B40A4EF2679A98600622F05 /* RDBrowseRecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B40A4EE2679A98600622F05 /* RDBrowseRecordViewController.m */; };
 		2B40A4F32679AA9B00622F05 /* RDBrowerRecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B40A4F22679AA9B00622F05 /* RDBrowerRecordCell.m */; };
+		2B540EEE267C8DC000971A4E /* RDUserMsgManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B540EED267C8DC000971A4E /* RDUserMsgManager.m */; };
 		2B6475932654F25E00F0DE18 /* MyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B6475922654F25E00F0DE18 /* MyViewController.m */; };
 		2B743D6B2664FE4200FE4224 /* MyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B743D6A2664FE4200FE4224 /* MyTableViewCell.m */; };
 		2B743D722665152A00FE4224 /* MyErrorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B743D712665152A00FE4224 /* MyErrorView.m */; };
@@ -454,6 +455,8 @@
 		2B40A4EE2679A98600622F05 /* RDBrowseRecordViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RDBrowseRecordViewController.m; sourceTree = "<group>"; };
 		2B40A4F12679AA9B00622F05 /* RDBrowerRecordCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RDBrowerRecordCell.h; sourceTree = "<group>"; };
 		2B40A4F22679AA9B00622F05 /* RDBrowerRecordCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RDBrowerRecordCell.m; sourceTree = "<group>"; };
+		2B540EEC267C8DC000971A4E /* RDUserMsgManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RDUserMsgManager.h; sourceTree = "<group>"; };
+		2B540EED267C8DC000971A4E /* RDUserMsgManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RDUserMsgManager.m; sourceTree = "<group>"; };
 		2B6475912654F25E00F0DE18 /* MyViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyViewController.h; sourceTree = "<group>"; };
 		2B6475922654F25E00F0DE18 /* MyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyViewController.m; sourceTree = "<group>"; };
 		2B743D692664FE4200FE4224 /* MyTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyTableViewCell.h; sourceTree = "<group>"; };
@@ -735,6 +738,8 @@
 				29407CA8236087BC003C9643 /* Controller */,
 				127B2E8BEC53D38ECD5E8D70 /* Category */,
 				127B22B16CC3A8DA9E76395B /* Const */,
+				2B540EEC267C8DC000971A4E /* RDUserMsgManager.h */,
+				2B540EED267C8DC000971A4E /* RDUserMsgManager.m */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1643,6 +1648,7 @@
 				29CE2BAC23FE642C001B0D03 /* RDSearchResultMainCell.m in Sources */,
 				127B23DB286C6C69BB30C274 /* RDLibraryCategoryCell.m in Sources */,
 				2BCC3675265BB72800AE5C80 /* RDRegisterView.m in Sources */,
+				2B540EEE267C8DC000971A4E /* RDUserMsgManager.m in Sources */,
 				295A669523FD20A900E2631A /* RDTextField.m in Sources */,
 				29554D51237D05BD00B4428D /* RDReadLightView.m in Sources */,
 				29F559992408AC1200742C19 /* RDCategoryResultCell.m in Sources */,

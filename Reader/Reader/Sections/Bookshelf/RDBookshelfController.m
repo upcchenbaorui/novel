@@ -19,7 +19,7 @@
 #import "RDCharpterApi.h"
 #import "RDCharpterDataManager.h"
 #import "LEEAlert.h"
-
+#import "RDUserMsgManager.h"
 
 #import "RDCharpterModel.h"
 
