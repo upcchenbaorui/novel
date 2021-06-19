@@ -12,7 +12,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol showErrorViewProtocol <NSObject>
 
+@required
 - (void)showErrorView:(NSString *)text;
+@required
+- (void)addErrorView;
 
 @end
 

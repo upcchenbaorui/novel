@@ -25,6 +25,16 @@
 
 @implementation MyViewController
 
+- (void)addErrorView {
+    self.errorView = [[MyErrorView alloc] init];
+    [self.view addSubview:self.errorView];
+    [self.errorView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.center.mas_equalTo(self.view);
+        make.height.mas_equalTo(35);
+    }];
+    self.errorView.hidden = YES;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupData];
@@ -58,14 +68,7 @@
     self.myTableView.frame = CGRectMake(0, self.myTopView.bottom, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - self.myTopView.bottom);
     self.myTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:self.myTableView];
-    
-    self.errorView = [[MyErrorView alloc] init];
-    [self.view addSubview:self.errorView];
-    [self.errorView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.center.mas_equalTo(self.view);
-        make.height.mas_equalTo(35);
-    }];
-    self.errorView.hidden = YES;
+
 }
 
 - (void)showErrorView:(NSString *)text {
