@@ -156,9 +156,9 @@
 }
 
 - (void)click {
-    NSString *ID = txtUser.text;
+    NSString *userId = txtUser.text;
     NSString *pwd = txtPwd.text;
-    if(![self judge:ID type:0]) {
+    if(![self judge:userId type:0]) {
         [self showErrorView:@"您的 ID 不符合要求"];
         return;
     }

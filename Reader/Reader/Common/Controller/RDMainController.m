@@ -20,19 +20,47 @@
 #import "RDLoginView.h"
 #import <Masonry/Masonry.h>
 #import "RDRegisterControllerViewController.h"
+#import "MyErrorView.h"
 
 #define kRDLoginSuccess @"kRDLoginSuccess"
 
-@interface RDMainController ()
+@interface RDMainController () <showErrorViewProtocol>
 
-@property(nonatomic, strong) RDLoginView *loginView;
+@property (nonatomic, strong) RDLoginView *loginView;
+@property (nonatomic,strong) MyErrorView *errorView;
 
 @end
 
 @implementation RDMainController
 
+- (void)addErrorView {
+    self.errorView = [[MyErrorView alloc] init];
+    [self.view addSubview:self.errorView];
+    [self.errorView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.mas_equalTo(self.view);
+        make.centerY.mas_equalTo(self.view).offset(-90);
+        make.height.mas_equalTo(35);
+    }];
+    self.errorView.hidden = YES;
+}
+
+- (void)showErrorView:(NSString *)text {
+    self.errorView.msgLabel.text = text;
+    [self.view bringSubviewToFront:self.errorView];
+    self.errorView.hidden = NO;
+    [UIView animateWithDuration:1.5 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+            self.errorView.alpha = 0;
+        } completion:^(BOOL finish){
+            self.errorView.hidden = YES;
+            self.errorView.alpha = 1;
+        }
+    ];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self addErrorView];
+    
     if ([self respondsToSelector:@selector(setAutomaticallyAdjustsScrollViewInsets:)]) {
         self.automaticallyAdjustsScrollViewInsets = NO;
     }
@@ -51,12 +79,57 @@
     self.loginView.registerBlock = ^{
         [weakSelf.navigationController pushViewController:[[RDRegisterControllerViewController alloc] init] animated:YES];
     };
-    self.loginView.loginBlock = ^{
-        [weakSelf hiddenLoginView];
+    self.loginView.loginBlock = ^(NSString * _Nonnull userId, NSString * _Nonnull pwd) {
+        [weakSelf login:userId pwd:pwd];
     };
+    
     [self.view addSubview:self.loginView];
 }
 
+- (BOOL)judge:(NSString *)str type:(NSInteger)type {
+    if(str == nil || [str isEqualToString:@""]) {
+        return false;
+    }
+    if(str.length < 6 || str.length > 11) {
+        return false;
+    }
+    if(type == 0) {
+        char x = [str characterAtIndex:0];
+        if(x >= 'a' && x <= 'z') {
+            
+        } else if(x >= 'A' && x <= 'Z') {
+            
+        } else {
+            return false;
+        }
+    } else {
+        int flag = 0;
+        for(int i = 0; i < str.length; ++ i) {
+            char x = [str characterAtIndex:i];
+            if(x >= '0' && x <= '9') {
+                flag |= 1;
+            }
+            else {
+                flag |= 2;
+            }
+        }
+        if(flag != 3) {
+            return false;
+        }
+    }
+    return true;
+}
+
+- (void)login:(NSString *)userId pwd:(NSString *)pwd {
+    if(![self judge:userId type:0]) {
+        [self showErrorView:@"您的 ID 不符合要求"];
+        return;
+    }
+    if(![self judge:pwd type:1]) {
+        [self showErrorView:@"您的密码 不符合要求"];
+        return;
+    }
+}
 
 - (void)hiddenLoginView {
     [[NSNotificationCenter defaultCenter] postNotificationName:kRDLoginSuccess object:nil userInfo:nil];

@@ -175,7 +175,7 @@ const CGFloat topMargin = 88;
 
 - (void)loginSecsess {
     if(self.loginBlock) {
-        self.loginBlock();
+        self.loginBlock(txtUser.text,txtPwd.text);
     }
 }
 @end
