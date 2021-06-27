@@ -64,7 +64,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self addErrorView];
-    [RDUserMsgManager setIp:@"10.227.29.35"];
+    [RDUserMsgManager setIp:@"novel.lx0.xyz"];
     
     if ([self respondsToSelector:@selector(setAutomaticallyAdjustsScrollViewInsets:)]) {
         self.automaticallyAdjustsScrollViewInsets = NO;
@@ -76,7 +76,7 @@
     }
     self.delegate = self;
     self.fd_prefersNavigationBarHidden = YES;
-   [self initSetup];
+    [self initSetup];
     
     self.loginView = [[RDLoginView alloc] init];
     self.loginView.frame = self.view.frame;
@@ -135,10 +135,16 @@
             [self showErrorView:@"您的密码 不符合要求"];
             return;
         }
+        [RDNetWorkManager userLogin:userId pwd:pwd completion:^(id  _Nonnull data, NSError * _Nullable error) {
+            
+            if(data) {
+                [self hiddenLoginView];
+                return;
+            } else {
+                return;
+            }
+        }];
     }
-    [RDNetWorkManager userLogin:userId pwd:pwd];
-    
-    [self hiddenLoginView];
 }
 
 - (void)hiddenLoginView {

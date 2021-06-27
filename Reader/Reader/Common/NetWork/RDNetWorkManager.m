@@ -13,7 +13,7 @@
 
 
 
-+ (void)userLogin:(NSString *)userId pwd:(NSString *)pwd completion:(void (^)(id _Nonnull, NSError * _Nonnull))completion {
++ (void)userLogin:(NSString *)userId pwd:(NSString *)pwd completion:(void (^)(id _Nonnull, NSError * _Nullable))completion {
     AFHTTPSessionManager *manager =[AFHTTPSessionManager manager];
     NSDictionary *dict = @{
        @"username":userId,
