@@ -21,8 +21,12 @@
 #import <Masonry/Masonry.h>
 #import "RDRegisterControllerViewController.h"
 #import "MyErrorView.h"
+#import "RDUserMsgManager.h"
+#import "RDNetWorkManager.h"
 
 #define kRDLoginSuccess @"kRDLoginSuccess"
+
+#define isNeedLogin 0
 
 @interface RDMainController () <showErrorViewProtocol>
 
@@ -60,6 +64,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self addErrorView];
+    [RDUserMsgManager setIp:@"10.227.29.35"];
     
     if ([self respondsToSelector:@selector(setAutomaticallyAdjustsScrollViewInsets:)]) {
         self.automaticallyAdjustsScrollViewInsets = NO;
@@ -121,14 +126,19 @@
 }
 
 - (void)login:(NSString *)userId pwd:(NSString *)pwd {
-    if(![self judge:userId type:0]) {
-        [self showErrorView:@"您的 ID 不符合要求"];
-        return;
+    if(isNeedLogin) {
+        if(![self judge:userId type:0]) {
+            [self showErrorView:@"您的 ID 不符合要求"];
+            return;
+        }
+        if(![self judge:pwd type:1]) {
+            [self showErrorView:@"您的密码 不符合要求"];
+            return;
+        }
     }
-    if(![self judge:pwd type:1]) {
-        [self showErrorView:@"您的密码 不符合要求"];
-        return;
-    }
+    [RDNetWorkManager userLogin:userId pwd:pwd];
+    
+    [self hiddenLoginView];
 }
 
 - (void)hiddenLoginView {

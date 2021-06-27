@@ -12,6 +12,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface RDUserMsgManager : NSObject
 
++ (void)setIp:(NSString *)ip;
++ (NSString *)ip;
+
 + (void)userDidLogin:(NSString *)phone username:(NSString *)username;
 
 + (void)userDidUnLogin;

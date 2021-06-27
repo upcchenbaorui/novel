@@ -22,4 +22,14 @@
     [defaults removeObjectForKey:@"phone"];
 }
 
++ (void)setIp:(NSString *)ip {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:ip forKey:@"ip"];
+}
+
++ (NSString *)ip {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    return [defaults objectForKey:@"ip"];
+}
+
 @end

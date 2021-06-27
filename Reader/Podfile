@@ -26,5 +26,7 @@ target 'Reader' do
   pod 'GBDeviceInfo', '~> 6.3.0'
   pod 'NJKWebViewProgress'
   pod 'LookinServer', :configurations => ['Debug']
+  pod 'AFNetworking'
+  pod 'JSONModel'
 
 end

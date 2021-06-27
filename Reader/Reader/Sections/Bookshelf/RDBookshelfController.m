@@ -20,8 +20,8 @@
 #import "RDCharpterDataManager.h"
 #import "LEEAlert.h"
 #import "RDUserMsgManager.h"
-
 #import "RDCharpterModel.h"
+#import "RDNetWorkManager.h"
 
 #define kItemCount ([RDUtilities iPad] ? 5 : 3)
 

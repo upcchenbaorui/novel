@@ -144,6 +144,7 @@
 		29F97D35240CB73200909240 /* RDCommCategoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = 29F97D34240CB73200909240 /* RDCommCategoryController.m */; };
 		29F97D39240CD23C00909240 /* RDSearchApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 29F97D38240CD23C00909240 /* RDSearchApi.m */; };
 		29F97D3C240CEB8000909240 /* RDHistoryRecordManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 29F97D3B240CEB8000909240 /* RDHistoryRecordManager.mm */; };
+		2B250ECF267DC839005B6EE2 /* RDNetWorkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B250ECE267DC839005B6EE2 /* RDNetWorkManager.m */; };
 		2B40A4EF2679A98600622F05 /* RDBrowseRecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B40A4EE2679A98600622F05 /* RDBrowseRecordViewController.m */; };
 		2B40A4F32679AA9B00622F05 /* RDBrowerRecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B40A4F22679AA9B00622F05 /* RDBrowerRecordCell.m */; };
 		2B540EEE267C8DC000971A4E /* RDUserMsgManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B540EED267C8DC000971A4E /* RDUserMsgManager.m */; };
@@ -151,6 +152,7 @@
 		2B743D6B2664FE4200FE4224 /* MyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B743D6A2664FE4200FE4224 /* MyTableViewCell.m */; };
 		2B743D722665152A00FE4224 /* MyErrorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B743D712665152A00FE4224 /* MyErrorView.m */; };
 		2B7EF0632664DEC300841451 /* RDMyTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B7EF0622664DEC300841451 /* RDMyTopView.m */; };
+		2BC51BF22688328F00E4B607 /* BookInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BC51BF12688328F00E4B607 /* BookInfoModel.m */; };
 		2BCC3675265BB72800AE5C80 /* RDRegisterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BCC3674265BB72800AE5C80 /* RDRegisterView.m */; };
 		2BCFD2A626560F1100492803 /* RDLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BCFD2A526560F1100492803 /* RDLoginView.m */; };
 		2BCFD2B0265695DC00492803 /* RDRegisterControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BCFD2AF265695DC00492803 /* RDRegisterControllerViewController.m */; };
@@ -451,6 +453,8 @@
 		29F97D38240CD23C00909240 /* RDSearchApi.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RDSearchApi.m; sourceTree = "<group>"; };
 		29F97D3A240CEB8000909240 /* RDHistoryRecordManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RDHistoryRecordManager.h; sourceTree = "<group>"; };
 		29F97D3B240CEB8000909240 /* RDHistoryRecordManager.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = RDHistoryRecordManager.mm; sourceTree = "<group>"; };
+		2B250ECD267DC839005B6EE2 /* RDNetWorkManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RDNetWorkManager.h; sourceTree = "<group>"; };
+		2B250ECE267DC839005B6EE2 /* RDNetWorkManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RDNetWorkManager.m; sourceTree = "<group>"; };
 		2B40A4ED2679A98600622F05 /* RDBrowseRecordViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RDBrowseRecordViewController.h; sourceTree = "<group>"; };
 		2B40A4EE2679A98600622F05 /* RDBrowseRecordViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RDBrowseRecordViewController.m; sourceTree = "<group>"; };
 		2B40A4F12679AA9B00622F05 /* RDBrowerRecordCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RDBrowerRecordCell.h; sourceTree = "<group>"; };
@@ -466,6 +470,8 @@
 		2B743D712665152A00FE4224 /* MyErrorView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyErrorView.m; sourceTree = "<group>"; };
 		2B7EF0612664DEC300841451 /* RDMyTopView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RDMyTopView.h; sourceTree = "<group>"; };
 		2B7EF0622664DEC300841451 /* RDMyTopView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RDMyTopView.m; sourceTree = "<group>"; };
+		2BC51BF02688328F00E4B607 /* BookInfoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BookInfoModel.h; sourceTree = "<group>"; };
+		2BC51BF12688328F00E4B607 /* BookInfoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BookInfoModel.m; sourceTree = "<group>"; };
 		2BCC3673265BB72800AE5C80 /* RDRegisterView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RDRegisterView.h; sourceTree = "<group>"; };
 		2BCC3674265BB72800AE5C80 /* RDRegisterView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RDRegisterView.m; sourceTree = "<group>"; };
 		2BCFD2A426560F1100492803 /* RDLoginView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RDLoginView.h; sourceTree = "<group>"; };
@@ -730,6 +736,8 @@
 		29407C9C23608673003C9643 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				2B250ED1267DCA15005B6EE2 /* 1801JsonModel */,
+				2B250ECC267DC821005B6EE2 /* NetWork */,
 				2B743D682664FE1A00FE4224 /* Cell */,
 				ABC345072439DDF000061974 /* Manager */,
 				29696CD7238683B800212879 /* Read */,
@@ -1318,6 +1326,24 @@
 			path = Search;
 			sourceTree = "<group>";
 		};
+		2B250ECC267DC821005B6EE2 /* NetWork */ = {
+			isa = PBXGroup;
+			children = (
+				2B250ECD267DC839005B6EE2 /* RDNetWorkManager.h */,
+				2B250ECE267DC839005B6EE2 /* RDNetWorkManager.m */,
+			);
+			path = NetWork;
+			sourceTree = "<group>";
+		};
+		2B250ED1267DCA15005B6EE2 /* 1801JsonModel */ = {
+			isa = PBXGroup;
+			children = (
+				2BC51BF02688328F00E4B607 /* BookInfoModel.h */,
+				2BC51BF12688328F00E4B607 /* BookInfoModel.m */,
+			);
+			path = 1801JsonModel;
+			sourceTree = "<group>";
+		};
 		2B743D682664FE1A00FE4224 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -1572,6 +1598,7 @@
 				295C3AC4243420F30057C0DC /* RDSpecialApi.m in Sources */,
 				2998A816242A23A100C4E07B /* RDUpdateModel.m in Sources */,
 				294C75D62405240E0013FB30 /* RDCategoryContentController.m in Sources */,
+				2BC51BF22688328F00E4B607 /* BookInfoModel.m in Sources */,
 				29407C9423607D0F003C9643 /* main.m in Sources */,
 				296B78172367EC730077BCAD /* RDDiscoverHeader.m in Sources */,
 				127B27996D0F20EF3C42B109 /* UIView+rd_dispalyInfo.m in Sources */,
@@ -1636,6 +1663,7 @@
 				29554D4E237D05AD00B4428D /* RDReadSetView.m in Sources */,
 				29406FF723B0F6C400E4495F /* RDToastView.m in Sources */,
 				29BBC3B12383CEFE0023825B /* RDReadToolPageView.m in Sources */,
+				2B250ECF267DC839005B6EE2 /* RDNetWorkManager.m in Sources */,
 				2B6475932654F25E00F0DE18 /* MyViewController.m in Sources */,
 				297F506B2412300A002837A2 /* RDConfigApi.m in Sources */,
 				127B23BF2F05230BF053E248 /* NSData+rd_wid.m in Sources */,
