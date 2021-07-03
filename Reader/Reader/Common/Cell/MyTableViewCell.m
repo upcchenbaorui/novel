@@ -81,7 +81,7 @@ const CGFloat kLeftAndRightMargin = 15;
         self.msgLabel.text = @"关于我们";
         self.iconView.image = [UIImage imageNamed:@"wode_about"];
     } else if(num == fenxinag) {
-        self.msgLabel.text = @"分享";
+        self.msgLabel.text = @"退出登录";
         self.iconView.image = [UIImage imageNamed:@"wode_share"];
     } else if(num == changjianwenti) {
         self.msgLabel.text = @"常见问题";

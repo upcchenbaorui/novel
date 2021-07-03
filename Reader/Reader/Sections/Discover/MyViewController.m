@@ -14,6 +14,9 @@
 #import "RDAboutUsControllerViewController.h"
 #import "RDBrowseRecordViewController.h"
 #import "RDReadRecordManager.h"
+
+#define kRDUserUnLogin @"kRDUserUnLogin"
+
 @interface MyViewController () <UITableViewDelegate,UITableViewDataSource,showErrorViewProtocol>
 
 @property(nonatomic, strong) RDMyTopView *myTopView;
@@ -37,6 +40,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self addErrorView];
     [self setupData];
     [self setupUIs];
     
@@ -49,8 +53,8 @@
     [self.arr addObject:@(liulanjilu)];
     [self.arr addObject:@(yuedupianhao)];
     [self.arr addObject:@(guanyuwomen)];
-    [self.arr addObject:@(fenxinag)];
     [self.arr addObject:@(changjianwenti)];
+    [self.arr addObject:@(fenxinag)];
     
 }
 
@@ -74,6 +78,7 @@
 - (void)showErrorView:(NSString *)text {
     self.errorView.msgLabel.text = text;
     self.errorView.hidden = NO;
+    [self.view bringSubviewToFront:self.errorView];
     [UIView animateWithDuration:1.5 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
             self.errorView.alpha = 0;
         } completion:^(BOOL finish){
@@ -121,6 +126,9 @@
         }
         RDBrowseRecordViewController *VC = [[RDBrowseRecordViewController alloc] init];
         [self.navigationController pushViewController:VC animated:YES];
+        return;
+    } else if(type == fenxinag) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:kRDUserUnLogin object:nil userInfo:nil];
         return;
     }
     [self showErrorView:@"该服务未开通"];

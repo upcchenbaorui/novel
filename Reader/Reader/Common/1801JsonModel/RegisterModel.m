@@ -1,14 +1,14 @@
 //
-//  BookInfoModel.m
+//  RegisterModel.m
 //  Reader
 //
-//  Created by 陈保瑞 on 2021/6/27.
+//  Created by 陈保瑞 on 2021/7/2.
 //  Copyright © 2021 LSY. All rights reserved.
 //
 
-#import "BookInfoModel.h"
+#import "RegisterModel.h"
 
-@implementation BookInfoModel
+@implementation NetworkModel
 
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
     return YES;
@@ -16,10 +16,7 @@
 
 + (JSONKeyMapper *)keyMapper {
     NSDictionary *dic = @{
-        @"bookId" : @"book_id",
-        @"bookName" : @"book_name",
-        @"imageUrl" : @"image_url",
-        @"userId" : @"user_id",
+        
     };
     return [[JSONKeyMapper alloc] initWithModelToJSONBlock:^NSString *(NSString *keyName) {
         return dic[keyName] ? : keyName;
@@ -28,7 +25,7 @@
 
 @end
 
-@implementation UserInfoModel
+@implementation DataModel
 
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
     return YES;
@@ -36,8 +33,8 @@
 
 + (JSONKeyMapper *)keyMapper {
     NSDictionary *dic = @{
-        @"userId" : @"user_id",
-        @"userName" : @"user_name"
+        @"bookInfoList" : @"book",
+        @"userInfo" : @"user_info",
     };
     return [[JSONKeyMapper alloc] initWithModelToJSONBlock:^NSString *(NSString *keyName) {
         return dic[keyName] ? : keyName;

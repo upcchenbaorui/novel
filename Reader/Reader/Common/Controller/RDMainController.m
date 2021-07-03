@@ -23,19 +23,32 @@
 #import "MyErrorView.h"
 #import "RDUserMsgManager.h"
 #import "RDNetWorkManager.h"
+#import "RegisterModel.h"
+#import "RDDiscoverAllApi.h"
+#import "RDLibraryDetailModel.h"
 
 #define kRDLoginSuccess @"kRDLoginSuccess"
-
-#define isNeedLogin 0
+#define kRDBookListUpdated @"kRDBookListUpdated"
+#define KRDUserUnLogin @"kRDUserUnLogin"
+#define kRDGuessYouWant @"kRDGuessYouWant"
+#define isNeedLogin 1
 
 @interface RDMainController () <showErrorViewProtocol>
 
 @property (nonatomic, strong) RDLoginView *loginView;
 @property (nonatomic,strong) MyErrorView *errorView;
+@property (nonatomic, strong) NSMutableArray *guess;
 
 @end
 
 @implementation RDMainController
+
+- (NSMutableArray *)guess {
+    if(!_guess) {
+        _guess = [[NSMutableArray alloc] init];
+    }
+    return _guess;
+}
 
 - (void)addErrorView {
     self.errorView = [[MyErrorView alloc] init];
@@ -61,10 +74,28 @@
     ];
 }
 
+- (void)userUnLogin {
+    [RDUserMsgManager userDidUnLogin];
+    self.loginView.hidden = NO;
+    self.loginView.alpha = 0;
+    self.loginView.frame = CGRectMake(self.loginView.width, 0, self.loginView.width, self.loginView.height);
+    [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+            self.loginView.alpha = 1;
+            CGRect frame = self.loginView.frame;
+            self.loginView.frame = CGRectMake(0, 0, frame.size.width, frame.size.height);
+            
+        } completion:^(BOOL finish){
+            
+            self.loginView.alpha = 1;
+        }
+    ];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self addErrorView];
     [RDUserMsgManager setIp:@"novel.lx0.xyz"];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userUnLogin) name:KRDUserUnLogin object:nil];
     
     if ([self respondsToSelector:@selector(setAutomaticallyAdjustsScrollViewInsets:)]) {
         self.automaticallyAdjustsScrollViewInsets = NO;
@@ -135,16 +166,32 @@
             [self showErrorView:@"您的密码 不符合要求"];
             return;
         }
-        [RDNetWorkManager userLogin:userId pwd:pwd completion:^(id  _Nonnull data, NSError * _Nullable error) {
+        [RDNetWorkManager userLogin:userId pwd:pwd completion:^(NetworkModel* _Nonnull model, NSError * _Nullable error) {
             
-            if(data) {
-                [self hiddenLoginView];
-                return;
+            if(model) {
+                if(model.data.code == 0) {
+                    [RDUserMsgManager userDidLogin:userId userName:model.data.userInfo.userName];
+                    [self refreshWithBookInfo:model.data.bookInfoList];
+                    [self hiddenLoginView];
+                } else if(model.data.code == 1) {
+                    [self showErrorView:@"用户名不存在!"];
+                } else {
+                    [self showErrorView:@"密码错误!"];
+                }
             } else {
                 return;
             }
         }];
+    } else {
+        [self hiddenLoginView];
     }
+}
+
+- (void)refreshWithBookInfo:(NSArray<BookInfoModel> *) bookInfo {
+     NSDictionary *dic = @{
+        @"bookInfo" : bookInfo,
+    };
+    [[NSNotificationCenter defaultCenter] postNotificationName:kRDBookListUpdated object:nil userInfo:dic];
 }
 
 - (void)hiddenLoginView {

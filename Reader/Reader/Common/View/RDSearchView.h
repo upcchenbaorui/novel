@@ -18,7 +18,8 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 @interface RDSearchView : UIView
-@property (nonatomic,weak) id<RDSearchViewDelegate> delegate;
+@property (nonatomic, weak) id<RDSearchViewDelegate> delegate;
+@property (nonatomic, strong) NSMutableArray *guess;
 @end
 
 NS_ASSUME_NONNULL_END

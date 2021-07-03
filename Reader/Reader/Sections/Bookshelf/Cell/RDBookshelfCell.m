@@ -15,7 +15,7 @@
 #import "LEEAlert.h"
 #import "RDBookDetailController.h"
 #import "RDCharpterDataManager.h"
-
+#import "RDNetWorkManager.h"
 
 #define kItemCount ([RDUtilities iPad] ? 5 : 3)
 @interface RDBookshelfCoverView : UIView
@@ -165,6 +165,7 @@
             [action setClickBlock:^{
                 RDBookshelfCoverView *view = (RDBookshelfCoverView *)ges.view;
                 RDBookDetailModel *model = view.book;
+                [RDNetWorkManager userDeleteBooks:model.bookId];
                 [RDReadRecordManager removeBookFromBookShelfWithBookId:model.bookId];
                 dispatch_async(dispatch_get_global_queue(0, 0), ^{
                     [RDCharpterDataManager deleteAllCharpterWithBookId:model.bookId];

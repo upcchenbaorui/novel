@@ -7,6 +7,7 @@
 //
 
 #import "RDMyTopView.h"
+#import "RDUserMsgManager.h"
 
 @interface RDMyTopView()
 
@@ -50,7 +51,7 @@
     self.nameLabel.textColor = [UIColor blackColor];
     self.nameLabel.textAlignment = NSTextAlignmentCenter;
     [self addSubview:self.nameLabel];
-    self.nameLabel.text = @"ID:本地游客";
+    self.nameLabel.text = [NSString stringWithFormat:@"ID:%@",[RDUserMsgManager userName]];
     self.nameLabel.numberOfLines = 1;
     [self.nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(self.imgView.mas_bottom).offset(18);

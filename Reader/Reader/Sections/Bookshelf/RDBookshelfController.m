@@ -22,29 +22,196 @@
 #import "RDUserMsgManager.h"
 #import "RDCharpterModel.h"
 #import "RDNetWorkManager.h"
+#import "RDDiscoverAllApi.h"
+#import "RegisterModel.h"
+#import "MyErrorView.h"
 
 #define kItemCount ([RDUtilities iPad] ? 5 : 3)
+#define kRDBookListUpdated @"kRDBookListUpdated"
+#define kRDLikeUpdated @"kRDLikeUpdated"
+#define KRDDeleteBook @"KRDDeleteBook"
 
-@interface RDBookshelfController ()
+@interface RDBookshelfController () <showErrorViewProtocol>
+
 @property (nonatomic,strong) NSMutableArray *dataSource;
 @property (nonatomic,strong) UITableView *tableView;
 @property (nonatomic,strong) NSMutableArray *bookSource;
+@property (nonatomic,strong) NSMutableArray *bookInfo;
+@property (nonatomic,strong) NSMutableArray *guessYouWant;
+@property (nonatomic,strong) MyErrorView *errorView;
+
 @end
 
 @implementation RDBookshelfController
 -(void)viewDidLoad{
     [super viewDidLoad];
+    [self addErrorView];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(bookChanged:) name:kRDBookListUpdated object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userLikeChange:) name:kRDLikeUpdated object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deleteBook:) name:KRDDeleteBook object:nil];
+    
+    [RDNetWorkManager userLikeBook:^(NetworkModel*  _Nonnull model, NSError * _Nullable error) {
+        if(model) {
+            if(model.data.category >= 1 && model.data.category <= 9) {
+                RDDiscoverAllApi *api = [[RDDiscoverAllApi alloc] init];
+                api.page = 1;
+                api.size = 8;
+                api.categoryId = model.data.category;
+                api.type = @"CATEGORY";
+                [api startWithCompletionBlock:^(RDBaseApi * _Nonnull request, NSString * _Nonnull error) {
+                    if (!error) {
+                        NSArray *list = api.list;
+                        NSMutableArray *arr = [[NSMutableArray alloc] init];
+                        for(RDLibraryDetailModel *item in list) {
+                            [arr addObject:item.title];
+                        }
+                        self.guessYouWant = [arr mutableCopy];
+                        [self.tableView reloadData];
+                    }
+                }];
+            }
+        }
+    }];
     [self.view addSubview:self.topView];
     [self.view addSubview:self.tableView];
     
     [self requestConfigModel];
     [self checkBookUpdate];
     //如果异常退出是阅读状态，那么直接打开书籍
-    RDBookDetailModel *book = [RDCacheModel sharedInstance].book;
-    if(book){
-         [RDReadHelper beginReadWithBookDetail:book animation:NO];
+//    if([RDUserMsgManager userIsLogin]) {
+//    RDBookDetailModel *book = [RDCacheModel sharedInstance].book;
+//        if(book){
+//             [RDReadHelper beginReadWithBookDetail:book animation:NO];
+//        }
+//    }
+    
+}
+
+- (void)addErrorView {
+    self.errorView = [[MyErrorView alloc] init];
+    [self.view addSubview:self.errorView];
+    [self.errorView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.mas_equalTo(self.view);
+        make.centerY.mas_equalTo(self.view).offset(-50);
+        make.height.mas_equalTo(35);
+    }];
+    self.errorView.hidden = YES;
+}
+
+- (void)showErrorView:(NSString *)text {
+    self.errorView.msgLabel.text = text;
+    self.errorView.hidden = NO;
+    [self.view bringSubviewToFront:self.errorView];
+    [UIView animateWithDuration:1.5 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+            self.errorView.alpha = 0;
+        } completion:^(BOOL finish){
+            self.errorView.hidden = YES;
+            self.errorView.alpha = 1;
+        }
+    ];
+}
+
+- (void)deleteBook:(NSNotification *)notification {
+    NSDictionary *dic = notification.userInfo;
+    NSNumber *num = [dic objectForKey:@"code"];
+    NSInteger n = num.integerValue;
+    if(n == 0) {
+        [self showErrorView:@"删除成功"];
+    } else if(n == 1) {
+        [self showErrorView:@"网络异常，删除失败"];
+    } else {
+        [self showErrorView:@"删除失败"];
+    }
+}
+
+- (void)userLikeChange:(NSNotification *)notification {
+    NSDictionary *dic = notification.userInfo;
+    NSNumber *num = [dic objectForKey:@"category"];
+    NSInteger category = num.integerValue;
+    if(category >= 1 && category <= 9) {
+        RDDiscoverAllApi *api = [[RDDiscoverAllApi alloc] init];
+        api.page = 1;
+        api.size = 8;
+        api.categoryId = category;
+        api.type = @"CATEGORY";
+        [api startWithCompletionBlock:^(RDBaseApi * _Nonnull request, NSString * _Nonnull error) {
+            if (!error) {
+                NSArray *list = api.list;
+                NSMutableArray *arr = [[NSMutableArray alloc] init];
+                for(RDLibraryDetailModel *item in list) {
+                    [arr addObject:item.title];
+                }
+                self.guessYouWant = [arr mutableCopy];
+                [self.tableView reloadData];
+            }
+        }];
+    }
+
+    
+}
+
+- (NSMutableArray *)guessYouWant {
+    if(!_guessYouWant) {
+        _guessYouWant = [[NSMutableArray alloc] init];
+    }
+    return _guessYouWant;
+}
+
+- (NSMutableArray *)bookInfo {
+    if(!_bookInfo) {
+        _bookInfo = [[NSMutableArray alloc] init];
+    }
+    return _bookInfo;
+}
+
+- (void)bookChanged:(NSNotification *)notification {
+    
+    NSDictionary *userInfo = notification.userInfo;
+    NSArray<BookInfoModel> *bookInfo = [userInfo objectForKey:@"bookInfo"];
+    NSMutableArray *bookInfos = [[NSMutableArray alloc] init];
+    for(BookInfoModel *book in bookInfo) {
+        RDBookDetailModel *model = [[RDBookDetailModel alloc] init];
+        model.bookId = book.bookId;
+        model.coverImg = book.imageUrl;
+        model.title = book.bookName;
+        [bookInfos addObject:model];
+    }
+    self.bookInfo = bookInfos;
+    [self pp_reload:bookInfos];
+}
+
+- (void)pp_reload:(NSArray *)bookInfo {
+    [self.dataSource removeAllObjects];
+    [self.bookSource removeAllObjects];
+    [self.dataSource addObject:@"RDBookshelfSearchCell"];
+
+    
+    
+    NSArray *books = bookInfo;
+    
+    _tableView.mj_header =books.count>0?[RDRefreshHeader headerWithRefreshingTarget:self refreshingAction:@selector(headerFresh)]:nil;
+    
+    if (books.count == 0) {
+        [self.dataSource addObject:@"RDBookshelfNoneCell"];
+    }
+    else{
+        NSMutableArray *array;
+        for (int i=0; i<books.count; i++) {
+            if (i%kItemCount == 0) {
+                array = [NSMutableArray array];
+                [self.bookSource addObject:array];
+            }
+           // RDBookDetailModel *record = [RDReadRecordManager getReadRecordWithBookId:290633];
+//            RDBookDetailModel *model = [[RDBookDetailModel alloc] init];
+//            RDBookDetailModel *tmp = books[i];
+//            model.bookId = tmp.bookId;
+            [array addObject:books[i]];
+        }
+        [self.dataSource addObjectsFromArray:self.bookSource];
     }
     
+    
+    [self.tableView reloadData];
 }
 //更新配置文件
 - (void)requestConfigModel
@@ -159,6 +326,7 @@
         if (!cell) {
             cell = [[RDBookshelfSearchCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:model];
         }
+        cell.guess = self.guessYouWant;
         return cell;
     }
     if ([model isKindOfClass:[NSString class]] && [model isEqualToString:@"RDBookshelfNoneCell"]) {
@@ -214,13 +382,15 @@
 
 -(void)p_reload
 {
+    if(self.bookInfo.count == 0) return;
+    if([self.bookInfo isEqual:self.dataSource]) return;
     [self.dataSource removeAllObjects];
     [self.bookSource removeAllObjects];
     [self.dataSource addObject:@"RDBookshelfSearchCell"];
 
     
     
-    NSArray *books = [RDReadRecordManager getAllOnBookshelf];
+    NSArray *books = [self.bookInfo copy];
     
     _tableView.mj_header =books.count>0?[RDRefreshHeader headerWithRefreshingTarget:self refreshingAction:@selector(headerFresh)]:nil;
     
@@ -249,7 +419,11 @@
 
 -(void)headerFresh
 {
-    [self checkBookUpdate];
+//    [self checkBookUpdate];
+    [RDNetWorkManager reloadBooks];
+    if (self.tableView.mj_header.isRefreshing) {
+        [self.tableView.mj_header endRefreshing];
+    }
     
 }
 

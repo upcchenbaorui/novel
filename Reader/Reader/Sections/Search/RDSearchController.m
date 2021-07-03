@@ -18,9 +18,12 @@
 #import "RDSearchResultController.h"
 #import "LEEAlert.h"
 
+#define kRDGuessYouWant @"kRDGuessYouWant"
+
 @interface RDSearchTopView : UIView
 @property (nonatomic,strong) RDTextField *textField;
 @property (nonatomic,strong) UIButton *cancel;
+
 
 @end
 
@@ -35,8 +38,6 @@
     }
     return self;
 }
-
-
 
 -(RDTextField *)textField
 {
@@ -95,17 +96,33 @@
 @property (nonatomic,strong) NSMutableArray <RDBookDetailModel *>*hotSource;
 @property (nonatomic,strong) NSMutableArray <NSArray *> *dataSource;
 @property (nonatomic,strong) RDSearchResultController *resultController;
+
+
 @end
 
 @implementation RDSearchController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(guessYouWant:) name:kRDGuessYouWant object:nil];
     [self.view addSubview:self.searchTopView];
     [self.view addSubview:self.tableView];
     [self p_reload];
     [self.searchTopView.textField becomeFirstResponder];
 }
+- (void)guessYouWant:(NSNotification *)notification {
+    NSDictionary *dic = notification.userInfo;
+    NSMutableArray *arr = [dic objectForKey:@"bookInfo"];
+    self.guess = [arr mutableCopy];
+}
+
+- (NSMutableArray *)guess {
+    if(!_guess) {
+        _guess = [[NSMutableArray alloc] init];
+    }
+    return _guess;
+}
+
 
 - (void)setSearchStr:(NSString *)searchStr {
     self.searchTopView.textField.placeholder = searchStr;
@@ -138,6 +155,11 @@
     if (self.historySource.count>0) {
         [self.dataSource addObject:@[@"RDSearchHistoryCell"]];
     }
+    if(self.guess.count > 0) {
+        [self.dataSource addObject:@[@"RDGuessYouWantCell"]];
+    }
+    if([self.guess count] > 0)
+        [self.dataSource addObject:self.guess];
     self.hotSource = [RDConfigModel getModel].hotSearch.mutableCopy;
     if (self.hotSource.count>0) {
         [self.dataSource addObject:self.hotSource];
@@ -229,6 +251,17 @@
         }
         cell.words = self.historySource;
         return cell;
+    } else if([model isKindOfClass:NSString.class] && [model isEqualToString:@"RDGuessYouWantCell"]) {
+        RDSearchHistoryCell *cell = [tableView dequeueReusableCellWithIdentifier:@"RDSearchHistoryCell"];
+        if (!cell) {
+            cell = [[RDSearchHistoryCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"RDSearchHistoryCell"];
+            __weak typeof(self)  ws = self;
+            [cell setDidWord:^(NSString * keyword) {
+                [ws p_search:keyword];
+            }];
+        }
+        cell.words = self.guess;
+        return cell;
     }
     if ([model isKindOfClass:RDBookDetailModel.class]) {
         RDSearchHotCell *cell = [tableView dequeueReusableCellWithIdentifier:@"RDSearchHotCell"];
@@ -260,6 +293,20 @@
         header.title = @"搜索历史";
         return header;
     }
+    if ([model isEqualToArray:@[@"RDGuessYouWantCell"]]) {
+        RDSearchHeaderFooterView *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"RDSearchHistoryHeader"];
+        if (!header) {
+            header = [[RDSearchHeaderFooterView alloc] initWithReuseIdentifier:@"RDSearchHistoryHeader"];
+//            UIButton *button = [[UIButton alloc] init];
+//            [button setTitle:@"清空" forState:UIControlStateNormal];
+//            [button setTitleColor:[UIColor colorWithHexValue:0xbbbbc8] forState:UIControlStateNormal];
+//            button.titleLabel.font = RDFont13;
+//            [button addTarget:self action:@selector(clear:) forControlEvents:UIControlEventTouchUpInside];
+//            [header addButton:button];
+        }
+        header.title = @"猜你想搜";
+        return header;
+    }
     if (model == self.hotSource) {
         RDSearchHeaderFooterView *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"RDSearchHotHeader"];
         if (!header) {
@@ -277,6 +324,10 @@
     if ([model isKindOfClass:NSString.class] && [model isEqualToString:@"RDSearchHistoryCell"])
     {
         return [RDSearchHistoryCell cellHeight:self.historySource];
+    }
+    if ([model isKindOfClass:NSString.class] && [model isEqualToString:@"RDGuessYouWantCell"])
+    {
+        return [RDSearchHistoryCell cellHeight:self.guess] - 50;
     }
     if ([model isKindOfClass:RDBookDetailModel.class]) {
         return 80;

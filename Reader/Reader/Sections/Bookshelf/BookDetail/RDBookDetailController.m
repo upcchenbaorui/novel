@@ -20,18 +20,47 @@
 #import "RDCheckApi.h"
 #import "RDCharpterApi.h"
 #import "RDHistoryRecordManager.h"
+#import "RDNetWorkManager.h"
 #import <StoreKit/StoreKit.h>
-@interface RDBookDetailController () <UITableViewDelegate,UITableViewDataSource,RDBookToolBarDelegate>
+#import "RegisterModel.h"
+#import "MyErrorView.h"
+
+@interface RDBookDetailController () <UITableViewDelegate,UITableViewDataSource,RDBookToolBarDelegate,showErrorViewProtocol>
 @property (nonatomic,strong) UITableView *tableView;
 @property (nonatomic,strong) NSArray *dataSource;
 @property (nonatomic,strong) RDBookDetailModel *model;
 @property (nonatomic,strong) RDBookToolBar *toolbar;
+@property (nonatomic,strong) MyErrorView *errorView;
 @end
  
 @implementation RDBookDetailController
 
+- (void)showErrorView:(NSString *)text {
+    self.errorView.msgLabel.text = text;
+    self.errorView.hidden = NO;
+    [self.view bringSubviewToFront:self.errorView];
+    [UIView animateWithDuration:1.5 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+            self.errorView.alpha = 0;
+        } completion:^(BOOL finish){
+            self.errorView.hidden = YES;
+            self.errorView.alpha = 1;
+        }
+    ];
+}
+
+- (void)addErrorView {
+    self.errorView = [[MyErrorView alloc] init];
+    [self.view addSubview:self.errorView];
+    [self.errorView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.center.mas_equalTo(self.view);
+        make.height.mas_equalTo(35);
+    }];
+    self.errorView.hidden = YES;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self addErrorView];
     adjustsContentInsets(self.tableView);
     [self fetch];
 }
@@ -69,6 +98,7 @@
                 make.height.mas_equalTo(65+[UIView safeBottomBar]);
             }];
             self.model = api.detailBook;
+            [RDNetWorkManager userLookBook:self.model.category];
             dispatch_async(dispatch_get_global_queue(0, 0), ^{
                 [RDHistoryRecordManager insertOrReplaceModel:self.model];
                 if (@available(iOS 10.3, *)) {
@@ -204,21 +234,33 @@
 
 -(void)didAddBook
 {
-    [RDReadHelper addBookshelfWithBookDetail:self.model comlpete:^{
-        self.toolbar.addBook.enabled = NO;
+    BookInfoModel *bookInfo = [[BookInfoModel alloc] init];
+    bookInfo.bookId = self.model.bookId;
+    bookInfo.bookName = self.model.title;
+    bookInfo.imageUrl = self.model.coverImg;
+    [RDNetWorkManager userAddBook:bookInfo completion:^(NetworkModel* _Nonnull model, NSError * _Nullable error) {
+        if(model) {
+            if(model.data.code == 0) {
+                [RDNetWorkManager reloadBooks];
+                [RDReadHelper addBookshelfWithBookDetail:self.model comlpete:^{
+                    self.toolbar.addBook.enabled = NO;
+                }];
+            }
+        }
     }];
-    
 }
 -(void)didDownload
 {
-    RDDownloadController *downloadController = [[RDDownloadController alloc] init];
-    
-    RDBookDetailModel *record = [RDReadRecordManager getReadRecordWithBookId:self.bookId];
-    if (!record) {
-        record = self.model.yy_modelCopy;
-    }
-    downloadController.record = record;
-    [self pushToController:downloadController];
+    [self showErrorView:@"该功能未开放"];
+    return;
+//    RDDownloadController *downloadController = [[RDDownloadController alloc] init];
+//    
+//    RDBookDetailModel *record = [RDReadRecordManager getReadRecordWithBookId:self.bookId];
+//    if (!record) {
+//        record = self.model.yy_modelCopy;
+//    }
+//    downloadController.record = record;
+//    [self pushToController:downloadController];
 }
 -(void)didBegin
 {
@@ -226,4 +268,11 @@
     [RDReadHelper beginReadWithBookDetail:self.model];
     
 }
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [RDNetWorkManager userLikeBook:^(id  _Nonnull model, NSError * _Nullable error) {
+            
+    }];
+}
+
 @end

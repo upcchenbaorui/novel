@@ -27,38 +27,37 @@
 @end
 @implementation RDSearchView
 
+- (void)setGuess:(NSMutableArray *)guess {
+    _guess = [guess mutableCopy];
+    self.searchSource = self.guess;
+    self.index = 0;
+    
+    self.imageView.frame = CGRectMake(12, 10, 15, 15);
+    [self addSubview:self.imageView];
+    self.searchLabel2.frame = CGRectMake(CGRectGetMaxX(self.imageView.frame) + 10, kSearchHeight -1, kScreenWidth -12-15-10-20, kSearchHeight);
+    [self addSubview:self.searchLabel2];
+    self.searchLabel1.frame = CGRectMake(CGRectGetMaxX(self.imageView.frame) + 10, 0, kScreenWidth -12-15-10-20, kSearchHeight);
+    [self updateTitleText];
+    [self addSubview:self.searchLabel1];
+    
+    self.backgroundColor = [UIColor colorWithHexValue:0xf1f2f5];
+    [self addGestureRecognizer:({
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(click)];
+        tap;
+    })];
+    
+    [self setupTimer];
+}
 -(instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
-        self.searchSource = [[NSMutableArray alloc] init];
-        NSArray *arr = [[RDSearchHistoryModel getModel] allWords];
-        for(NSString *model in arr) {
-            [self.searchSource addObject:model];
-        }
-        arr = [RDConfigModel getModel].hotSearch;
-        for(RDBookDetailModel *model in arr) {
-            [self.searchSource addObject:model.title];
-        }
+//        NSArray *arr = [[RDSearchHistoryModel getModel] allWords];
+//        for(NSString *model in arr) {
+//            [self.searchSource addObject:model];
+//        }
         
-        self.index = 0;
-        
-        
-        self.imageView.frame = CGRectMake(12, 10, 15, 15);
-        [self addSubview:self.imageView];
-        self.searchLabel2.frame = CGRectMake(CGRectGetMaxX(self.imageView.frame) + 10, kSearchHeight -1, kScreenWidth -12-15-10-20, kSearchHeight);
-        [self addSubview:self.searchLabel2];
-        self.searchLabel1.frame = CGRectMake(CGRectGetMaxX(self.imageView.frame) + 10, 0, kScreenWidth -12-15-10-20, kSearchHeight);
-        [self updateTitleText];
-        [self addSubview:self.searchLabel1];
-        
-        self.backgroundColor = [UIColor colorWithHexValue:0xf1f2f5];
-        [self addGestureRecognizer:({
-            UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(click)];
-            tap;
-        })];
-        
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setupTimer) name:kRDLoginSuccess object:nil];
+
         self.layer.cornerRadius = 35 / 2;
         self.layer.masksToBounds = YES;
     }

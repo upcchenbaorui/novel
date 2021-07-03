@@ -152,6 +152,7 @@
 		2B743D6B2664FE4200FE4224 /* MyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B743D6A2664FE4200FE4224 /* MyTableViewCell.m */; };
 		2B743D722665152A00FE4224 /* MyErrorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B743D712665152A00FE4224 /* MyErrorView.m */; };
 		2B7EF0632664DEC300841451 /* RDMyTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B7EF0622664DEC300841451 /* RDMyTopView.m */; };
+		2BA2088E268F0FAB0055E17E /* RegisterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BA2088D268F0FAB0055E17E /* RegisterModel.m */; };
 		2BC51BF22688328F00E4B607 /* BookInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BC51BF12688328F00E4B607 /* BookInfoModel.m */; };
 		2BCC3675265BB72800AE5C80 /* RDRegisterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BCC3674265BB72800AE5C80 /* RDRegisterView.m */; };
 		2BCFD2A626560F1100492803 /* RDLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BCFD2A526560F1100492803 /* RDLoginView.m */; };
@@ -470,6 +471,8 @@
 		2B743D712665152A00FE4224 /* MyErrorView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyErrorView.m; sourceTree = "<group>"; };
 		2B7EF0612664DEC300841451 /* RDMyTopView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RDMyTopView.h; sourceTree = "<group>"; };
 		2B7EF0622664DEC300841451 /* RDMyTopView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RDMyTopView.m; sourceTree = "<group>"; };
+		2BA2088C268F0FAB0055E17E /* RegisterModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RegisterModel.h; sourceTree = "<group>"; };
+		2BA2088D268F0FAB0055E17E /* RegisterModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RegisterModel.m; sourceTree = "<group>"; };
 		2BC51BF02688328F00E4B607 /* BookInfoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BookInfoModel.h; sourceTree = "<group>"; };
 		2BC51BF12688328F00E4B607 /* BookInfoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BookInfoModel.m; sourceTree = "<group>"; };
 		2BCC3673265BB72800AE5C80 /* RDRegisterView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RDRegisterView.h; sourceTree = "<group>"; };
@@ -1340,6 +1343,8 @@
 			children = (
 				2BC51BF02688328F00E4B607 /* BookInfoModel.h */,
 				2BC51BF12688328F00E4B607 /* BookInfoModel.m */,
+				2BA2088C268F0FAB0055E17E /* RegisterModel.h */,
+				2BA2088D268F0FAB0055E17E /* RegisterModel.m */,
 			);
 			path = 1801JsonModel;
 			sourceTree = "<group>";
@@ -1588,6 +1593,7 @@
 				29407C8323607D0E003C9643 /* AppDelegate.m in Sources */,
 				29313C3B236C298A00408AF8 /* RDShareModel.m in Sources */,
 				297F507124124B8E002837A2 /* RDCacheModel.m in Sources */,
+				2BA2088E268F0FAB0055E17E /* RegisterModel.m in Sources */,
 				294C75F1240619E20013FB30 /* RDRankApi.m in Sources */,
 				29696CD42385398800212879 /* RDReadCatalogView.m in Sources */,
 				29BA84902361CEB8000FE927 /* RDRefreshHeader.m in Sources */,

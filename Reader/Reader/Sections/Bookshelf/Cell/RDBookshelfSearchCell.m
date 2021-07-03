@@ -22,6 +22,13 @@
     }
     return self;
 }
+
+- (void)setGuess:(NSMutableArray *)guess {
+    _guess = [guess mutableCopy];
+    self.searchView.guess = self.guess;
+}
+
+
 -(RDSearchView *)searchView
 {
     if (!_searchView) {
@@ -36,6 +43,7 @@
 {
     RDSearchController *controller = [[RDSearchController alloc] init];
     controller.searchStr = str;
+    controller.guess = [self.guess mutableCopy];
     [[RDUtilities getCurrentVC].navigationController pushViewController:controller animated:YES];
 }
 

@@ -8,6 +8,9 @@
 
 #import "RDRegisterView.h"
 #import "MyErrorView.h"
+#import "RDNetWorkManager.h"
+#import "RegisterModel.h"
+#import "RDUtilities.h"
 #define mainSize    [UIScreen mainScreen].bounds.size
 
 #define offsetLeftHand      60
@@ -18,7 +21,7 @@
 #define rectRightHand       CGRectMake(imgLogin.frame.size.width / 2 + 60, 90, 40, 65)
 #define rectRightHandGone   CGRectMake(mainSize.width / 2 + 62, vLogin.frame.origin.y - 22, 40, 40)
 
-@interface RDRegisterView() <showErrorViewProtocol>
+@interface RDRegisterView() <showErrorViewProtocol , UITextFieldDelegate>
 {
     UITextField* txtUser;
     UITextField* txtPwd;
@@ -166,6 +169,77 @@
         [self showErrorView:@"您的密码 不符合要求"];
         return;
     }
+    [RDNetWorkManager userRegister:userId pwd:pwd completion:^(NetworkModel *  _Nullable model, NSError * _Nullable error) {
+        if(model) {
+            if(model.data.code == 0) {
+                [self showErrorView:@"注册成功!"];
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    [[RDUtilities getCurrentVC].navigationController popViewControllerAnimated:YES];
+                });
+            } else if(model.data.code == 1) {
+                [self showErrorView:@"用户名已存在!"];
+            } else{
+                [self showErrorView:@"网络请求异常，请检查网络！"];
+            }
+        } else {
+            [self showErrorView:@"网络请求异常，请检查网络！"];
+        }
+    }];
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    if ([textField isEqual:txtUser]) {
+        if (showType != JxbLoginShowType_PASS)
+        {
+            showType = JxbLoginShowType_USER;
+            return;
+        }
+        showType = JxbLoginShowType_USER;
+        [UIView animateWithDuration:0.5 animations:^{
+            imgLeftHand.frame = CGRectMake(imgLeftHand.frame.origin.x - offsetLeftHand, imgLeftHand.frame.origin.y + 30, imgLeftHand.frame.size.width, imgLeftHand.frame.size.height);
+            
+            imgRightHand.frame = CGRectMake(imgRightHand.frame.origin.x + 48, imgRightHand.frame.origin.y + 30, imgRightHand.frame.size.width, imgRightHand.frame.size.height);
+            
+            
+            imgLeftHandGone.frame = CGRectMake(imgLeftHandGone.frame.origin.x - 70, imgLeftHandGone.frame.origin.y, 40, 40);
+            
+            imgRightHandGone.frame = CGRectMake(imgRightHandGone.frame.origin.x + 30, imgRightHandGone.frame.origin.y, 40, 40);
+         
+            
+        } completion:^(BOOL b) {
+            
+        }];
+
+    }
+    else if ([textField isEqual:txtPwd]) {
+        if (showType == JxbLoginShowType_PASS)
+        {
+            showType = JxbLoginShowType_PASS;
+            return;
+        }
+        showType = JxbLoginShowType_PASS;
+        [UIView animateWithDuration:0.5 animations:^{
+            imgLeftHand.frame = CGRectMake(imgLeftHand.frame.origin.x + offsetLeftHand, imgLeftHand.frame.origin.y - 30, imgLeftHand.frame.size.width, imgLeftHand.frame.size.height);
+            imgRightHand.frame = CGRectMake(imgRightHand.frame.origin.x - 48, imgRightHand.frame.origin.y - 30, imgRightHand.frame.size.width, imgRightHand.frame.size.height);
+            
+            
+            imgLeftHandGone.frame = CGRectMake(imgLeftHandGone.frame.origin.x + 70, imgLeftHandGone.frame.origin.y, 0, 0);
+            
+            imgRightHandGone.frame = CGRectMake(imgRightHandGone.frame.origin.x - 30, imgRightHandGone.frame.origin.y, 0, 0);
+
+        } completion:^(BOOL b) {
+            
+        }];
+    }
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    if(textField == txtUser) {
+        [txtUser resignFirstResponder];
+    } else {
+        [txtPwd resignFirstResponder];
+    }
+    return YES;
 }
 
 - (void)addErrorView {
@@ -191,5 +265,6 @@
         }
     ];
 }
+
 
 @end

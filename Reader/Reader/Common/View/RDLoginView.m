@@ -50,6 +50,12 @@ const CGFloat topMargin = 88;
     return self;
 }
 
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [txtUser resignFirstResponder];
+    [txtPwd resignFirstResponder];
+    return YES;
+}
 - (void)setupUI {
     
     UIImageView* imgLogin = [[UIImageView alloc] initWithFrame:CGRectMake(mainSize.width / 2 - 211 / 2, 100 + topMargin, 211, 109)];
@@ -119,6 +125,10 @@ const CGFloat topMargin = 88;
     [vLogin addSubview:self.registerBtn];
     [vLogin addSubview:self.loginBtn];
     
+//    txtUser.text = @"User111";
+//    txtPwd.text = @"a123456";
+    
+    
 }
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
@@ -167,14 +177,25 @@ const CGFloat topMargin = 88;
     }
 }
 
+- (void)clearText {
+    txtUser.text = @"";
+    txtPwd.text = @"";
+}
+
 - (void)toRegisterController {
     if(self.registerBlock){
+        [txtPwd resignFirstResponder];
+        [txtUser resignFirstResponder];
+        [self clearText];
         self.registerBlock();
     }
 }
 
 - (void)loginSecsess {
     if(self.loginBlock) {
+        [txtPwd resignFirstResponder];
+        [txtUser resignFirstResponder];
+        [self clearText];
         self.loginBlock(txtUser.text,txtPwd.text);
     }
 }
