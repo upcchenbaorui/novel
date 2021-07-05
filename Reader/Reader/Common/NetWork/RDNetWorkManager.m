@@ -28,7 +28,7 @@
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     manager.requestSerializer.timeoutInterval = 1.f;
     NSDictionary *dict = @{
-       @"userId" : [RDUserMsgManager userId],
+//      a @"userId" : [RDUserMsgManager userId],
     };
     // parameters 参数字典
     NSMutableString *ip = [[NSMutableString alloc] init];

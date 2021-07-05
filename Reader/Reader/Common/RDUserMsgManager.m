@@ -24,10 +24,11 @@
     return [defaults objectForKey:@"userId"];
 }
 
-+ (void)userDidLogin:(NSString *)userId userName:(NSString *)userName {
++ (void)userDidLogin:(NSString *)userId userName:(NSString *)userName pwd:(NSString *)pwd {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:userId forKey:@"userId"];
     [defaults setObject:userName forKey:@"userName"];
+    [defaults setObject:pwd forKey:@"pwd"];
 }
 
 

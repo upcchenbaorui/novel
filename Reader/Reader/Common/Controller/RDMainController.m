@@ -94,7 +94,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self addErrorView];
-    [RDUserMsgManager setIp:@"novel.lx0.xyz"];
+    [RDUserMsgManager setIp:@"10.95.173.234"];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userUnLogin) name:KRDUserUnLogin object:nil];
     
     if ([self respondsToSelector:@selector(setAutomaticallyAdjustsScrollViewInsets:)]) {
@@ -170,7 +170,7 @@
             
             if(model) {
                 if(model.data.code == 0) {
-                    [RDUserMsgManager userDidLogin:userId userName:model.data.userInfo.userName];
+                    [RDUserMsgManager userDidLogin:userId userName:model.data.userInfo.userName pwd:pwd];
                     [self refreshWithBookInfo:model.data.bookInfoList];
                     [self hiddenLoginView];
                 } else if(model.data.code == 1) {

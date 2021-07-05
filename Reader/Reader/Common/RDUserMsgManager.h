@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (NSString *)ip;
 
-+ (void)userDidLogin:(NSString *) userId userName:(NSString *)userName;
++ (void)userDidLogin:(NSString *) userId userName:(NSString *)userName pwd:(NSString *)pwd;
 
 + (void)userDidUnLogin;
 

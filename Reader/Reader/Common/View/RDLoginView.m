@@ -195,8 +195,8 @@ const CGFloat topMargin = 88;
     if(self.loginBlock) {
         [txtPwd resignFirstResponder];
         [txtUser resignFirstResponder];
-        [self clearText];
         self.loginBlock(txtUser.text,txtPwd.text);
+        [self clearText];
     }
 }
 @end
